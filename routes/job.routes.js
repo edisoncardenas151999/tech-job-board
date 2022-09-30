@@ -20,7 +20,7 @@ router.get('/jobs/search', (req, res , ) => {
 router.get('/jobs/:jobId/description', (req, res, ) => {
       
       const {jobId} = req.params;
-        console.log(jobId)
+       
       Job.findById(jobId)
        .then( (jobDetails) => {
         console.log('Job details: ', jobDetails);
