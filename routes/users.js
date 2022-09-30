@@ -111,8 +111,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 router.get("/home", isLoggedIn,(req, res) => {
-  if(req.session.user.userType === "Recruiter")
-  { res.render("users/recruiter", {user:req.session.user})}
+  if(req.session.user.userType === "Employer")
+  { res.render("users/employer", {user:req.session.user})}
 else if(req.session.user.userType === "Developer"){
   res.render("users/developer", {user:req.session.user})
 }
