@@ -1,0 +1,30 @@
+
+<div>
+   <h2>Signup</h2>
+  <form action="/users/signup" method="POST">
+
+    <label> Username
+      <input type="text" name="username" placeholder="username" required> 
+    </label>
+
+    <label> Email
+      <input type="email" name="email" placeholder="email" required> 
+    </label>
+
+    <label> Password
+      <input type="password" name="password" placeholder="********" required> 
+    </label>
+
+  <p>Please select if:</p>
+  <input type="radio"  name= "userType" value="Developer" required>
+  <label for="Developer">Developer</label><br>
+  <input type="radio" name= "userType" value="Recruiter" required>
+  <label for="Recruiter">Recruiter</label>
+    <button type="submit">Create</button>
+    <br>
+<a href="/">back</a>
+{{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+  {{/if}}
+  </form>
+</div>
