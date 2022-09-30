@@ -7,7 +7,10 @@ const jobSchema = new Schema({
         type: String,
         lowercase: true
     },
-    company: String,
+    company:{
+        type: String,
+        lowercase: true
+    } ,
     location: String,
     salary: Number,
     description: String
