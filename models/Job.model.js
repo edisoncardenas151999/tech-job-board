@@ -3,8 +3,14 @@ const {Schema, model} =  require('mongoose');
 
 const jobSchema = new Schema({
 
-    jobTitle: String,
-    company: String,
+    jobTitle:{
+        type: String,
+        lowercase: true
+    },
+    company:{
+        type: String,
+        lowercase: true
+    } ,
     location: String,
     salary: Number,
     description: String

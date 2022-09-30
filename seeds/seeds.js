@@ -31,7 +31,7 @@ mongoose
  },
 
  {
-    jobTitle:'Jr. Net Web Developer',
+    jobTitle:'jr. net web developer',
     company: 'QT9 Software',
     location: 'Aurora, IL',
     salary: 50000,
@@ -39,7 +39,7 @@ mongoose
  },
  {
     jobTitle:'Full Stack Web Developer',
-    company: 'Delaware County Community College',
+    company: 'delaware county community college',
     location: 'Media, PA',
     salary: 90000,
     description: "The Full Stack Web Developer in collaboration with the Web Team will develop, maintain, and provide support for the Colleges Drupal content management system which powers the Colleges public website, web portal and Customer Service wiki as well as administer and support the College SaaS mobile app. "
