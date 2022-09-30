@@ -34,11 +34,19 @@ app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 
 const index = require("./routes/index");
 app.use("/", index);
+<<<<<<< HEAD
 const developer= require("./routes/developer");
 app.use("/developer", developer);
 const employer = require("./routes/employer");
 app.use("/employer", employer );
+=======
 
+const users = require("./routes/users");
+app.use("/users", users);
+>>>>>>> 695765619098e1e1b77aa253fda447a31c8d313c
+
+const jobRoutes = require("./routes/job.routes");
+app.use('/', jobRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
