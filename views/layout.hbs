@@ -11,9 +11,9 @@
 <body>
 
   <nav>
-    <h2 id="company-name">Tech Job Board</h2>
-    <ul>
 
+    <h3 id="company-name">Tech Job Board</h3>
+    <ul>
       <a href="/" class="nav-link">
         <li>Home</li>
       </a>
@@ -26,6 +26,13 @@
 
     </ul>
   </nav>
+  <section id="job-search-section">
+
+    <form action="/jobs/search" method="GET">
+      <input type="text" name="jobTitle" name="company" placeholder="Job title or company" id="search-input-field">
+      <button type="submit" class="job-search-btn">Search Jobs</button>
+    </form>
+  </section>
 
   <footer>
     <ul>

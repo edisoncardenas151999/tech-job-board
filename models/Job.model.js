@@ -4,8 +4,9 @@ const {Schema, model} =  require('mongoose');
 const jobSchema = new Schema({
 
     jobTitle: String,
-    salaryMin: Number,
-    salaryMax: Number,
+    company: String,
+    location: String,
+    salary: Number,
     description: String
 
 })

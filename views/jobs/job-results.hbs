@@ -1,0 +1,15 @@
+<ul>
+    {{#if jobs}}
+    <p>All results</p>
+    <li>
+        <h3>{{jobs.jobTitle}}</h3>
+        <h3>{{jobs.company}}</h3>
+        <p>{{jobs.location}}</p>
+        <a href="/jobs/{{jobs._id}}/description" id="job-description">See description =></a>
+    </li>
+    {{else}}
+    <p>No Match</p>
+    {{/if}}
+
+    {{!-- {{/each}} --}}
+</ul>
