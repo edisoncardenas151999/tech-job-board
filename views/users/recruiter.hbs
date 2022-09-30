@@ -1,10 +1,12 @@
 {{#if user}}
-    <h1>Welcome recruiter {{user.username}} </h1>
-  <form action='/users/logout' method="POST">
-    <button>Logout</button>
-  </form>
+
+<h3>Welcome recruiter {{user.username}} </h3>
+<form action='/users/logout' method="POST">
+  <button>Logout</button>
+</form>
 
 
 {{else }}
-  <br><p>Please log in to show this page!</p>
+<br>
+<p>Please log in to show this page!</p>
 {{/if}}
