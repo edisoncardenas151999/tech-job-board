@@ -4,9 +4,9 @@ const Job = require('../models/Job.model');
 
 router.get('/jobs/search', (req, res , ) => {
     
-      const {jobTitle} = req.query;
+      const {jobTitle,company} = req.query;
 
-      Job.findOne({jobTitle })
+      Job.findOne({$or:[{jobTitle},{company}]})
       . then ( (Results) => {
         console.log(Results);
         res.render('jobs/job-results', {jobs:Results})
