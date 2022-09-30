@@ -3,7 +3,7 @@ const Job = require('../models/Job.model');
 
 
 router.get('/jobs/search', (req, res , ) => {
-      console.log(req.query)
+    
       const {jobTitle} = req.query;
 
       Job.findOne({jobTitle })

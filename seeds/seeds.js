@@ -31,7 +31,7 @@ mongoose
  },
 
  {
-    jobTitle:'jr. net web developer',
+    jobTitle:'Jr. Net Web Developer',
     company: 'QT9 Software',
     location: 'Aurora, IL',
     salary: 50000,
