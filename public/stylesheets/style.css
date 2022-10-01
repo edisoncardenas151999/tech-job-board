@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
 
 body {
   margin: 0;
@@ -104,13 +104,13 @@ footer {
 
 ul .footer-link {
   /* width: 75px; */
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 3em;
-  padding: 10px;
-  list-style-type: none;
-  color: #090962;
-  transition: 0.9s;
+display: flex;
+justify-content: flex-end;
+margin-right: 3em;
+padding: 10px;
+list-style-type: none;
+color: #090962;
+transition: 0.9s;
 }
 
 
