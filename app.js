@@ -41,10 +41,6 @@ const employer = require("./routes/employer");
 app.use("/employer", employer );
 
 
-const users = require("./routes/users");
-app.use("/users", users);
-
-
 const jobRoutes = require("./routes/job.routes");
 app.use('/', jobRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
