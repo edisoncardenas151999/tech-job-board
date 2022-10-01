@@ -8,34 +8,39 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
-  <body>
-   
 
-
-
+<body>
   <nav>
 
     <h3 id="company-name">Tech Job Board</h3>
+
     <ul>
+
       <a href="/" class="nav-link">
         <li>Home</li>
       </a>
-      <a href="/users/signup" class="nav-link">
-        <li>Signup</li>
+      <a href="/employer/signup" class="nav-link">
+        <li>sign up as employer</li>
       </a>
-      <a href="/users/login" class="nav-link">
-        <li>Login</li>
+
+      <a href="/developer/signup" class="nav-link">
+        <li>sign up as developer</li>
+      </a>
+
+      <a href="/employer/signup" class="nav-link">
+        <li>sign in as employer</li>
+      </a>
+
+      <a href="/developer/signup" class="nav-link">
+        <li>sign in as developer</li>
       </a>
 
     </ul>
   </nav>
-  <section id="job-search-section">
 
-    <form action="/jobs/search" method="GET">
-      <input type="text" name="jobTitle" name="company" placeholder="Job title or company" id="search-input-field">
-      <button type="submit" class="job-search-btn">Search Jobs</button>
-    </form>
-  </section>
+
+  {{{body}}}
+
 
   <footer>
     <ul>
@@ -51,8 +56,6 @@
     </ul>
     <p id="copy-right">Tech Job Board, inc. &copy; 2022 All Rights Reserved Worldwide</p>
   </footer>
-
-  {{{body}}}
 
   <script src="/js/script.js"></script>
 </body>
