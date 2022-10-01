@@ -34,12 +34,10 @@ app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 
 const index = require("./routes/index");
 app.use("/", index);
-
 const developer= require("./routes/developer");
 app.use("/developer", developer);
 const employer = require("./routes/employer");
 app.use("/employer", employer );
-
 
 const jobRoutes = require("./routes/job.routes");
 app.use('/', jobRoutes);

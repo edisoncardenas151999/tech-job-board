@@ -104,7 +104,7 @@ footer {
 
 ul .footer-link {
   /* width: 75px; */
-display: flex;
+/* display: flex;
 justify-content: flex-end;
 margin-right: 3em;
 padding: 10px;
@@ -119,8 +119,8 @@ ul .footer-link:hover {
 }
 
 #profile {
-  color: #090962;
-  margin-left: 5px;
+  color: #090962; */ 
+  /* margin-left: 5px;
 }
 
 #copy-right {
@@ -136,4 +136,4 @@ ul .footer-link:hover {
 
 .back-link {
   color: #090962;
-}
+} */

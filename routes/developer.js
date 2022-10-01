@@ -14,11 +14,6 @@ router.get("/signup", isLoggedOut, (req, res) => {
 
 router.post("/signup", isLoggedOut, (req, res) => {
   const { firstname, lastname, password, email } = req.body;
-  if (!username) {
-    return res.status(400).render("developer/signup", {
-      errorMessage: "Please provide your username.",
-    });
-  }
   if (!email) {
     return res.status(400).render("developer/signup", {
       errorMessage: "Please provide your email.",
