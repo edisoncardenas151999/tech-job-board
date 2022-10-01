@@ -43,7 +43,15 @@ mongoose
     location: 'Media, PA',
     salary: 90000,
     description: "The Full Stack Web Developer in collaboration with the Web Team will develop, maintain, and provide support for the Colleges Drupal content management system which powers the Colleges public website, web portal and Customer Service wiki as well as administer and support the College SaaS mobile app. "
- }
+ },
+
+ {
+  jobTitle:'Full Stack Web Developer',
+  company: 'media Query',
+  location: 'Miami, FL',
+  salary: 90000,
+  description: "The Full Stack Web Developer in collaboration with the Web Team will develop, maintain, and provide support for the Colleges Drupal content management system which powers the Colleges public website, web portal and Customer Service wiki as well as administer and support the College SaaS mobile app. "
+}
  
   ]
 

@@ -22,7 +22,7 @@ router.get('/jobs/search', (req, res , ) => {
     
 });
 
-router.get('/jobs/:jobId/description', (req, res, ) => {
+router.get('/jobs/:jobId', (req, res, ) => {
       
       const {jobId} = req.params;
        
