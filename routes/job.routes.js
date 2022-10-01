@@ -4,12 +4,17 @@ const Job = require('../models/Job.model');
 
 router.get('/jobs/search', (req, res , ) => {
     
-      const {jobTitle,company} = req.query;
-
-      Job.findOne({$or:[{jobTitle},{company}]})
-      . then ( (Results) => {
-        console.log(Results);
-        res.render('jobs/job-results', {jobs:Results})
+      const {q:query} = req.query;
+      console.log(query)
+      Job.find({
+        $or:[
+          {jobTitle:query},
+          {company:query}
+        ]
+      })
+      . then ( (results) => {
+        console.log(results);
+        res.render('jobs/job-results', {jobs:results})
       })
       .catch( (error) => {
         console.log('Error while getting the data from the DB: ', error);
@@ -29,7 +34,7 @@ router.get('/jobs/:jobId/description', (req, res, ) => {
        .catch( (error) => {
         console.log('Error while retrieving the data from the DB: ', error);
        });
-})
+});
 
 
 

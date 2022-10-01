@@ -1,12 +1,14 @@
 <ul>
     {{#if jobs}}
     <p>All results</p>
+    {{#each jobs}}
     <li>
-        <h3>{{jobs.jobTitle}}</h3>
-        <h3>{{jobs.company}}</h3>
-        <p>{{jobs.location}}</p>
-        <a href="/jobs/{{jobs._id}}/description" id="job-description">See description =></a>
+        <h3>{{this.jobTitle}}</h3>
+        <h3>{{this.company}}</h3>
+        <p>{{this.location}}</p>
+        <a href="/jobs/{{this._id}}/description" id="job-description">See description =></a>
     </li>
+    {{/each}}
     {{else}}
     <p>No Match found.</p>
     {{/if}}
