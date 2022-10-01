@@ -115,11 +115,14 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
 const{resume} = req.body
 Developer.create({resume})
 .then((newResume)=>{
-  console.log(newResume)
-  res.redirect("home")
+ Developer.findOne(req.session.user)
+  .then((foundUser)=>{
+    foundUser.resume = newResume
+ 
+    res.redirect("home")
+  })
 })
 })
-
 
 
 //Log Out
