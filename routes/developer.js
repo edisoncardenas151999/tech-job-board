@@ -1,12 +1,10 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { redirect } = require("express/lib/response");
-const User = require("../models/User.model");
 const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Developer = require("../models/developer.model");
-const Employer = require("../models/employer.model")
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("developer/signup");
@@ -32,7 +30,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
     });
   }
-  Developer.findOne({ firstname, lastname }).then((found) => {
+  Developer.findOne({ email }).then((found) => {
     if (found) {
       return res
         .status(400)
@@ -46,6 +44,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
           firstname,
           lastname,
           password: hashedPassword,
+          email,
         });
       })
       .then((user) => {
@@ -75,15 +74,15 @@ router.get("/login", isLoggedOut, (req, res) => {
   res.render("developer/login");
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
+  if (!email) {
     return res
       .status(400)
       .render("developer/login", { errorMessage: "Please provide your username." });
   }
 
-  Developer.findOne({ firstname, lastname })
+  Developer.findOne({ email })
     .then((user) => {
       if (!user) {
         return res
@@ -108,10 +107,20 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 router.get("/home", isLoggedIn,(req, res) => {
-
-  res.render("developer/developer", {user:req.session.user})
-
+  console.log(req.session.user)
+  res.render("developer/developer", {user:req.session.user} )
 });
+
+router.post("/createResume", isLoggedIn,(req, res)=>{
+const{resume} = req.body
+Developer.create({resume})
+.then((newResume)=>{
+  console.log(newResume)
+  res.redirect("home")
+})
+})
+
+
 
 //Log Out
 router.post("/logout",isLoggedIn, (req, res, next) => {
