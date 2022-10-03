@@ -1,12 +1,14 @@
 {{#if user}}
-    <h1>Welcome employer {{user.firstname}} {{user.jobs}} </h1>
+    <h1>Welcome employer {{user.firstname}} </h1>
   <form action='/employer/logout' method="POST">
     <button>Logout</button>
   </form>
 <br>
 <a href="createJobPost">Create Job Post</a>
 <br>
-<a href="editJobPost">Edit job Post</a>
+<a href="jobs">View/Edit Job Post</a>
+<br>
+
 {{else }}
 <br>
 <p>Please log in to show this page!</p>

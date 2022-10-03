@@ -1,0 +1,12 @@
+
+
+{{#each user.jobs}}
+<form  action="/employer/edit" method="POST">
+<textarea  name="jobs" rows="10" cols="50" >
+  {{this}}
+</textarea>
+<button>Save</button>
+</form>
+{{/each}}
+<br>
+<a href="home">back</a>

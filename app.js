@@ -29,7 +29,6 @@ const capitalized = (string) =>
 app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 
 
-
 // 👇 Start handling routes here
 
 // Don't need to memorize, one-and-done, allows us to call session in route
