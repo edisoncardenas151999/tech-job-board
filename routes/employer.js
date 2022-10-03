@@ -6,6 +6,7 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Employer = require("../models/employer.model")
 const Job = require("../models/Job.model")
+const mongoose = require("mongoose");
 
 
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -122,7 +123,7 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
    const{ jobTitle, company, salary, description, location } = req.body
    Job.create( {jobTitle, company, salary, description, location })
    .then((newJob)=>{
-    Employer.findByIdAndUpdate(req.session.user._id, { $push: { "jobs": newJob._id } } )
+    Employer.findByIdAndUpdate(req.session.user._id, { $push: { "jobs": newJob._id } },{new:true} )
     .then((updatedEmployer) =>{
       console.log(updatedEmployer)
       res.redirect("home")
