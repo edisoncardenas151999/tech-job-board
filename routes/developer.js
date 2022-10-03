@@ -5,13 +5,19 @@ const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Developer = require("../models/developer.model");
+const mongoose = require("mongoose");
+
+router.get("/home", isLoggedIn,(req, res) => {
+  res.render("developer/developer", {user:req.session.user} )
+});
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("developer/signup");
 });
 
+
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { firstname, lastname, password, email } = req.body;
+  const { firstname, lastname, password, email, resume } = req.body;
   if (!email) {
     return res.status(400).render("developer/signup", {
       errorMessage: "Please provide your email.",
@@ -45,6 +51,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
           lastname,
           password: hashedPassword,
           email,
+          resume,
         });
       })
       .then((user) => {
@@ -106,22 +113,13 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/home", isLoggedIn,(req, res) => {
-  console.log(req.session.user)
-  res.render("developer/developer", {user:req.session.user} )
-});
 
 router.post("/createResume", isLoggedIn,(req, res)=>{
-const{resume} = req.body
-Developer.create({resume})
-.then((newResume)=>{
- Developer.findOne(req.session.user)
-  .then((foundUser)=>{
-    foundUser.resume = newResume
- 
-    res.redirect("home")
+  Developer.findByIdAndUpdate(req.session.user._id,{resume:req.body.resume},{new:true})
+  .then((newUserWithResume)=>{
+    console.log(newUserWithResume)
+    res.render("developer/developer", {user:newUserWithResume})
   })
-})
 })
 
 

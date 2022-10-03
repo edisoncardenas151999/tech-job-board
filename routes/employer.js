@@ -6,7 +6,13 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Employer = require("../models/employer.model")
 const Job = require("../models/Job.model")
+const mongoose = require("mongoose");
 
+
+router.get("/home", isLoggedIn,(req, res) => {
+  res.render("employer/employer", {user:req.session.user})
+
+});
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("employer/signup");
@@ -45,6 +51,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         return Employer.create({
           firstname,
           lastname,
+          email,
           password: hashedPassword,
         });
       })
@@ -107,10 +114,6 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/home", isLoggedIn,(req, res) => {
-  res.render("employer/employer", {user:req.session.user})
-
-});
 
 
 router.get("/createJobPost", isLoggedIn,(req, res) => {
@@ -122,7 +125,7 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
    const{ jobTitle, company, salary, description, location } = req.body
    Job.create( {jobTitle, company, salary, description, location })
    .then((newJob)=>{
-    Employer.findByIdAndUpdate(req.session.user._id, { $push: { "jobs": newJob._id } } )
+    Employer.findByIdAndUpdate(req.session.user._id, { $push: { "jobs": newJob._id } },{new:true} )
     .then((updatedEmployer) =>{
       console.log(updatedEmployer)
       res.redirect("home")
@@ -133,6 +136,18 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
   });
 });
 
+
+
+router.get("/editJobPost", isLoggedIn,(req, res) => {
+  res.render("employer/edit-job-post", {user:req.session.user} )
+});
+
+router.post("/editJobPost", isLoggedIn,(req, res)=>{
+  Developer.findByIdAndUpdate(req.session.user._id,{jobs:req.body.jobs},{new:true})
+  .then((newJob)=>{
+    res.redirect('home')
+  })
+})
 
 
 

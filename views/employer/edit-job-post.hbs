@@ -1,0 +1,9 @@
+{{#if user}}
+
+<form action="/employer/editJobPost" method="POST">
+    <textarea name = "jobs" rows="20" cols="50">
+        {{user.jobs}}
+    </textarea>
+      <button>submit</button>
+</form>
+{{/if}}
