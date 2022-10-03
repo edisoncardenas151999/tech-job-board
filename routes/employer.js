@@ -145,7 +145,6 @@ router.get("/editJobPost", isLoggedIn,(req, res) => {
 router.post("/editJobPost", isLoggedIn,(req, res)=>{
   Developer.findByIdAndUpdate(req.session.user._id,{jobs:req.body.jobs},{new:true})
   .then((newJob)=>{
-    console.log(newJob)
     res.redirect('home')
   })
 })
