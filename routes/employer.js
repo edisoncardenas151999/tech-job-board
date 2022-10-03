@@ -9,6 +9,11 @@ const Job = require("../models/Job.model")
 const mongoose = require("mongoose");
 
 
+router.get("/home", isLoggedIn,(req, res) => {
+  res.render("employer/employer", {user:req.session.user})
+
+});
+
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("employer/signup");
 });
@@ -46,6 +51,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         return Employer.create({
           firstname,
           lastname,
+          email,
           password: hashedPassword,
         });
       })
@@ -108,10 +114,6 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/home", isLoggedIn,(req, res) => {
-  res.render("employer/employer", {user:req.session.user})
-
-});
 
 
 router.get("/createJobPost", isLoggedIn,(req, res) => {
@@ -134,6 +136,19 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
   });
 });
 
+
+
+router.get("/editJobPost", isLoggedIn,(req, res) => {
+  res.render("employer/edit-job-post", {user:req.session.user} )
+});
+
+router.post("/editJobPost", isLoggedIn,(req, res)=>{
+  Developer.findByIdAndUpdate(req.session.user._id,{jobs:req.body.jobs},{new:true})
+  .then((newJob)=>{
+    console.log(newJob)
+    res.redirect('home')
+  })
+})
 
 
 
