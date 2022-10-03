@@ -13,7 +13,7 @@ const jobSchema = new Schema({
     } ,
     location: String,
     salary: Number,
-    description: String
+    description: String,
 
 })
 

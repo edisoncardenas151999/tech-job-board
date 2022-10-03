@@ -5,10 +5,10 @@ const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Developer = require("../models/developer.model");
-const mongoose = require("mongoose");
+
 
 router.get("/home", isLoggedIn,(req, res) => {
-  res.render("developer/developer", {user:req.session.user} )
+  res.render("developer/developer", {user:req.session.user})
 });
 
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -114,11 +114,18 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 
+router.get("/createResume", isLoggedIn, (req,res)=>{
+  Developer.findById(req.session.user._id)
+  .then((foundUser)=>{
+    res.render("developer/resume", {user:foundUser})
+  })
+})
+
 router.post("/createResume", isLoggedIn,(req, res)=>{
   Developer.findByIdAndUpdate(req.session.user._id,{resume:req.body.resume},{new:true})
-  .then((newUserWithResume)=>{
-    console.log(newUserWithResume)
-    res.render("developer/developer", {user:newUserWithResume})
+  .then((updatedUSer)=>{
+    console.log(updatedUSer)
+    res.redirect("createResume")
   })
 })
 

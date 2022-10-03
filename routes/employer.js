@@ -5,8 +5,10 @@ const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Employer = require("../models/employer.model")
-const Job = require("../models/Job.model")
-const mongoose = require("mongoose");
+const Job = require("../models/Job.model");
+const { populate } = require("../models/developer.model");
+const { route } = require(".");
+
 
 
 router.get("/home", isLoggedIn,(req, res) => {
@@ -117,18 +119,29 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 
 router.get("/createJobPost", isLoggedIn,(req, res) => {
-  res.render("employer/job-post")
+ res.render("employer/job-post")})
 
-});
 
+
+router.get("/jobs", isLoggedIn, (req,res)=>{
+  console.log(req.session.user._id)
+ Employer.findById(req.session.user._id)
+ .populate('jobs')
+  .then((updatedUser)=>{
+    console.log(updatedUser)
+   res.render("employer/jobs", {user:updatedUser})
+  })
+})
+
+ 
 router.post("/createJobPost", isLoggedIn,(req, res) =>{
    const{ jobTitle, company, salary, description, location } = req.body
    Job.create( {jobTitle, company, salary, description, location })
    .then((newJob)=>{
-    Employer.findByIdAndUpdate(req.session.user._id, { $push: { "jobs": newJob._id } },{new:true} )
+    Employer.findByIdAndUpdate(req.session.user._id, { $push: { "jobs": newJob._id } } )
     .then((updatedEmployer) =>{
       console.log(updatedEmployer)
-      res.redirect("home")
+      res.redirect("jobs")
     })
    })
    .catch( (error) => {
@@ -138,16 +151,13 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
 
 
 
-router.get("/editJobPost", isLoggedIn,(req, res) => {
-  res.render("employer/edit-job-post", {user:req.session.user} )
-});
-
-router.post("/editJobPost", isLoggedIn,(req, res)=>{
-  Developer.findByIdAndUpdate(req.session.user._id,{jobs:req.body.jobs},{new:true})
-  .then((newJob)=>{
-    res.redirect('home')
-  })
-})
+// router.post("/edit", isLoggedIn,(req, res)=>{
+//   Employer.findByIdAndUpdate(req.session.user._id,{jobs:req.body.jobs},{new:true})
+//   .then((updatedUSer)=>{
+//     console.log(updatedUSer)
+//     res.redirect("jobs")
+//   })
+// })
 
 
 
