@@ -42,7 +42,10 @@ const employer = require("./routes/employer");
 app.use("/employer", employer );
 
 const jobRoutes = require("./routes/job.routes");
-app.use('/', jobRoutes);
+app.use("/", jobRoutes);
+
+const infoRoutes = require("./routes/info.routes");
+app.use("/", infoRoutes);
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
