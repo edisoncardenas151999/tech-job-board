@@ -1,12 +1,14 @@
 
 
 {{#each user.jobs}}
-<form  action="/employer/edit" method="POST">
-<textarea  name="jobs" rows="10" cols="50" >
-  {{this}}
+<form action="/employer/{{this._id}}/delete"  method="POST">
+<textarea  rows="10" cols="50" >
+{{this.jobTitle}}
+{{this.company}}
 </textarea>
-<button>Save</button>
-</form>
+      <button>Delete</button>
+    </form>
 {{/each}}
+
 <br>
 <a href="home">back</a>

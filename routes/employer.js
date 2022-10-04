@@ -119,6 +119,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 
 router.get("/createJobPost", isLoggedIn,(req, res) => {
+  console.log(req.session.user.jobs)
  res.render("employer/job-post")})
 
 
@@ -128,7 +129,6 @@ router.get("/jobs", isLoggedIn, (req,res)=>{
  Employer.findById(req.session.user._id)
  .populate('jobs')
   .then((updatedUser)=>{
-    console.log(updatedUser)
    res.render("employer/jobs", {user:updatedUser})
   })
 })
@@ -140,7 +140,6 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
    .then((newJob)=>{
     Employer.findByIdAndUpdate(req.session.user._id, { $push: { "jobs": newJob._id } } )
     .then((updatedEmployer) =>{
-      console.log(updatedEmployer)
       res.redirect("jobs")
     })
    })
@@ -150,16 +149,13 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
 });
 
 
-
-// router.post("/edit", isLoggedIn,(req, res)=>{
-//   Employer.findByIdAndUpdate(req.session.user._id,{jobs:req.body.jobs},{new:true})
-//   .then((updatedUSer)=>{
-//     console.log(updatedUSer)
-//     res.redirect("jobs")
-//   })
-// })
-
-
+router.post('/:Id/delete', (req, res, next) => {
+  const { Id } = req.params;
+  Job.findByIdAndDelete(Id)
+   .then(()=>{
+  res.redirect("jobs")
+   })
+})
 
 
 //Log Out
