@@ -1,6 +1,7 @@
-<div>
-   <h2>Signup</h2>
-  <form action="/employer/signup" method="POST">
+<a href="/" class="back-link">back</a>
+<div class="form-container">
+  <h2>Signup</h2>
+  <form action="/employer/signup" method="POST" class="the-form">
 
     <label> Username
       <input type="text" name="username" placeholder="username" required>
@@ -15,10 +16,12 @@
     </label>
 
     <button type="submit">Create</button>
-    <br>
-    <a href="/" class="back-link">back</a>
+
+
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
+
+
 </div>

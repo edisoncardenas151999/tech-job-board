@@ -1,29 +1,30 @@
-
-<div>
-   <h2>Signup</h2>
-  <form action="/developer/signup" method="POST">
+<a href="/" class="back-link">back</a>
+<div class="form-container">
+  <h2>Signup</h2>
+  <form action="/developer/signup" method="POST" class="the-form">
 
     <label> Firstname
-      <input type="text" name="firstname" placeholder="firstname" required> 
+      <input type="text" name="firstname" placeholder="firstname" required>
     </label>
 
     <label> Lastname
-      <input type="text" name="lastname" placeholder="lastname" required> 
+      <input type="text" name="lastname" placeholder="lastname" required>
     </label>
 
     <label> Email
-      <input type="email" name="email" placeholder="email" required> 
+      <input type="email" name="email" placeholder="email" required>
     </label>
 
     <label> Password
-      <input type="password" name="password" placeholder="********" required> 
+      <input type="password" name="password" placeholder="********" required>
     </label>
 
     <button type="submit">Create</button>
     <br>
-<a href="/">back</a>
-{{#if errorMessage}}
+
+    {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
-  {{/if}}
+    {{/if}}
   </form>
+
 </div>
