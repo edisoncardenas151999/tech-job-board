@@ -98,6 +98,10 @@
     color: #fff;
   }
 
+  .drop-btn:after {
+    content: ' \25BE';
+  }
+
   .dropdown {
     position: relative;
     display: inline-block;
