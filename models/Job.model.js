@@ -12,7 +12,8 @@ const jobSchema = new Schema({
         lowercase: true
     } ,
     location: String,
-    salary: Number,
+    salary: String,
+    workHours: String,
     description: String,
 
 })

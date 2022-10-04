@@ -2,9 +2,10 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>{{title}}</title>
+
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -12,28 +13,39 @@
 <body>
   <nav>
 
-    <h3 id="company-name">Tech Job Board</h3>
+    <h3 id="company-name">
+      <a href="/" id="logo">Tech Job Board</a>
+    </h3>
 
     <ul>
+      <li>
+        <a href="/" class="nav-link">Home</a>
+      </li>
 
-      <a href="/" class="nav-link">
-        <li>Home</li>
-      </a>
-      <a href="/employer/signup" class="nav-link">
-        <li>sign up as employer</li>
-      </a>
+      <li>
+        <a href="/about" class="nav-link">About</a>
+      </li>
 
-      <a href="/developer/signup" class="nav-link">
-        <li>sign up as developer</li>
-      </a>
+      <li>
+        <a href="/service" class="nav-link">Service</a>
+      </li>
 
-      <a href="/employer/login" class="nav-link">
-        <li>sign in as employer</li>
-      </a>
 
-      <a href="/developer/login" class="nav-link">
-        <li>sign in as developer</li>
-      </a>
+      <li class="dropdown">
+        <button class="drop-btn">Developer</button>
+        <div class="dropdown-content">
+          <a href="/developer/signup">Sign up</a>
+          <a href="/developer/login">Sign in</a>
+        </div>
+      </li>
+
+      <li class="dropdown">
+        <button class="drop-btn" id="employer-dropdown">Employer</button>
+        <div class="dropdown-content">
+          <a href="/employer/signup">Sign up</a>
+          <a href="/employer/login">Sign in</a>
+        </div>
+      </li>
 
     </ul>
   </nav>
@@ -45,22 +57,27 @@
   {{{body}}}
 
 
-  <footer>
-    <ul>
-      <a href="#" class="footer-link">
-        <li>About Us</li>
-      </a>
-      <a href="#" class="footer-link">
-        <li>Service</li>
-      </a>
-      <a href="#" class="footer-link">
-        <li>Contact</li>
-      </a>
-    </ul>
-    <p id="copy-right">Tech Job Board, inc. &copy; 2022 All Rights Reserved Worldwide</p>
-  </footer>
 
-  <script src="/js/script.js"></script>
-</body>
 
 </html>
+
+
+
+
+{{!-- <footer>
+  <ul>
+    <a href="/about" class="footer-link">
+      <li>About</li>
+    </a>
+    <a href="/service" class="footer-link">
+      <li>Service</li>
+    </a>
+    <a href="#" class="footer-link">
+      <li>Contact</li>
+    </a>
+  </ul>
+  <p id="copy-right">Tech Job Board, inc. &copy; 2022 All Rights Reserved Worldwide</p>
+</footer>
+
+<script src="/js/script.js"></script>
+</body> --}}

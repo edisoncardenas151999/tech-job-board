@@ -1,9 +1,18 @@
+{{!-- Job description --}}
 <a href="/" class="back-link">back</a>
+<div class="job-detail-container">
+    <div class="job-info-header">
+        <h3 class="job-title">{{job.jobTitle}}</h3>
+        <h4 class="job-company">{{job.company}}</h4>
+        <p class="job-location">{{job.location}}</p>
+    </div>
+    <div class="job-info-details">
+        <p class="job-salary">{{job.salary}} annually</p>
+        <p class="job-work-hours">{{job.workHours}}</p>
+        <p class="job-description">{{job.description}}</p>
+    </div>
 
-<ul>
-    <h3>Description</h3>
-    <li>
-        <p>{{job.description}}</p>
-    </li>
-
-</ul>
+</div>
+<div class="apply-now-btn-wrapper">
+    <a href="/developer/login" class="apply-now-btn">Apply Now</a>
+</div>

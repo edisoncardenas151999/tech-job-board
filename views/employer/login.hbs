@@ -1,17 +1,18 @@
-<form action="/employer/login" method="POST">
-   <label> email
-      <input type="text" name="email">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
-
-   <button type="submit">Submit</button>
-</form>
-
-<h4> Please Log in!</h4>
-<br>
 <a href="/" class="back-link">back</a>
-{{#if errorMessage}}
-{{errorMessage}}
-{{/if}}
+<div class="form-container">
+   <h2>Log in</h2>
+   <form action="/employer/login" method="POST" class="the-form" id="login-form">
+      <label> email
+         <input type="text" name="email">
+      </label>
+      <label> Password
+         <input type="password" name="password">
+      </label>
+
+      <button type="submit">Submit</button>
+      {{#if errorMessage}}
+      <p class="login-error">{{errorMessage}}</p>
+      {{/if}}
+   </form>
+
+</div>
