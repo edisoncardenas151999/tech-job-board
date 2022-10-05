@@ -1,6 +1,11 @@
 <a href="/" class="back-link">back</a>
 <div class="form-container">
-  <h2>Signup</h2>
+  <h2>Sign up as a Developer</h2>
+  {{#if jobId}}
+  <a href="/developer/login?applyto={{jobId}}" class="login-link">Already have an account? login</a>
+  {{else}}
+  <a href="/developer/login" class="login-link">Already have an account? login</a>
+  {{/if}}
   <form action="/developer/signup" method="POST" class="the-form">
 
     <label> Firstname
