@@ -3,9 +3,8 @@ const Job = require('../models/Job.model');
 
       // GET route to search for jobs and companies
 router.get('/jobs/search', (req, res ) => {
-    
-      const {q:query} = req.query;
-      console.log(query)
+        console.log(req.query)
+        const query = req.query.q;
       
       Job.find({$or:[
         {jobTitle: {'$regex':query, '$options':'i'}},
@@ -13,7 +12,6 @@ router.get('/jobs/search', (req, res ) => {
       
       ]})
       . then ( (results) => {
-        console.log(results);
         res.render('jobs/job-results', {jobs:results})
       })
       .catch( (error) => {
@@ -24,30 +22,17 @@ router.get('/jobs/search', (req, res ) => {
  // GET route to see company details
 
 router.get('/jobs/:jobId', (req, res, ) => {
-      
+    
       const {jobId} = req.params;
        
       Job.findById(jobId)
        .then( (jobDetails) => {
-        console.log('Job details: ', jobDetails);
         res.render('jobs/job-description', {job: jobDetails})
        })
        .catch( (error) => {
         console.log('Error while retrieving the data from the DB: ', error);
        });
 });
-
-  // GET route to apply for a specific job
-
-  // router.get('/jobs/apply', (req, res, ) => {
-  //   res.render('jobs/job-apply');
-  // })
-
-
-
-
-
-
 
 
 module.exports = router;

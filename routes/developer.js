@@ -79,11 +79,21 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
 
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("developer/login");
+     
+
+  const jobId = req.query.applyto;
+  //  console.log('jobId:', jobId)
+   if(jobId){
+    console.log('job exists')
+    res.render("developer/login", {jobId});
+   }
+   else{
+    res.render('developer/login');
+   }
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { email, password } = req.body;
-
+    const { email, password } = req.body;
+   
   if (!email) {
     return res
       .status(400)
@@ -151,6 +161,7 @@ router.post("/apply/:id", isLoggedIn,(req, res) =>{
    res.render("developer/my-jobs")
   })
 });
+
 
 
 
