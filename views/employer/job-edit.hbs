@@ -1,0 +1,23 @@
+
+<div class="form-container">
+<form action="/employer/{{user._id}}/edit" method="POST" class="the-form">
+  <label>Job Title:
+    <input  type="text" name="jobTitle" value="{{user.jobTitle}}" />
+  </label>
+
+  <label>Company
+    <input type="text" name="company" value="{{user.company}}" />
+  </label>
+
+  <label> Description:
+    <input name="description" cols="30" rows="4" value="{{user.description}}" />
+  </label>
+
+  <label> Salary:
+    <input type="number" name="rating" min="1" max="10" value="{{user.salary}}" />
+  </label>
+  <button>Save changes</button>
+   <a href="/employer/jobs">Cancel</a>
+</form>
+
+</div>

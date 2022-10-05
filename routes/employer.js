@@ -12,7 +12,7 @@ const { route } = require(".");
 
 
 
-router.get("/home", isLoggedIn,(req, res) => {
+router.get("/dashboard", isLoggedIn,(req, res) => {
   res.render("employer/employer", {user:req.session.user})
 
 });
@@ -60,7 +60,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       })
       .then((user) => {
         req.session.user = user;
-        res.redirect("home");
+        res.redirect("dashboard");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -108,7 +108,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
 
         req.session.user = user;
-        return res.redirect("home");
+        return res.redirect("dashboard");
       });
     })
     .catch((err) => {
@@ -150,13 +150,25 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
 });
 
 
-router.post('/:Id/delete', (req, res, next) => {
-  const { Id } = req.params;
-  Job.findByIdAndDelete(Id)
-   .then(()=>{
-  res.redirect("jobs")
-   })
+router.get("/:id/edit", isLoggedIn, (req,res)=>{
+  const { id } = req.params;
+  Job.findById(id)
+  .then((foundJob)=>{
+    console.log(foundJob)
+    res.render("employer/job-edit", {user:foundJob})
+  })
 })
+ 
+router.post("/:id/edit", isLoggedIn,(req, res) =>{
+  const { id } = req.params;
+  const{ jobTitle, company, salary, description, location } = req.body
+  Job.findByIdAndUpdate(id, { jobTitle, company, salary, description, location }, { new: true })
+.then((newJob)=>{
+  console.log(newJob)
+  res.redirect("/employer/jobs")
+})
+});
+
 
 
 //Log Out

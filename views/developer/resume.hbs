@@ -6,23 +6,24 @@
   </form>
 
 <label> Resume</label>
-
-<form  action="/developer/createResume" method="POST">
+<div class="form-container">
+<form  action="/developer/createResume" method="POST" class="the-form">
 <textarea  name="resume" rows="10" cols="50" >
 {{#if user.resume}}
 {{user.resume}}
+</div>
 {{else}}
 Full name:
 Job:
 Education:
 Skills:
+Contact number:
 {{/if}}
 </textarea>
 <button>Save</button>
 </form>
-<a href="/developer/home">back</a>
 
-
+<a href="/developer/dashboard">back</a>
 
 {{else }}
   <br><p>Please log in to show this page!</p>
