@@ -7,7 +7,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const Developer = require("../models/developer.model");
 
 
-router.get("/home", isLoggedIn,(req, res) => {
+router.get("/dashboard", isLoggedIn,(req, res) => {
   res.render("developer/developer", {user:req.session.user})
 });
 
@@ -56,7 +56,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       })
       .then((user) => {
         req.session.user = user;
-        res.redirect("home");
+        res.redirect("dashboard");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -88,7 +88,6 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       .status(400)
       .render("developer/login", { errorMessage: "Please provide your username." });
   }
-
   Developer.findOne({ email })
     .then((user) => {
       if (!user) {
@@ -104,7 +103,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
 
         req.session.user = user;
-        return res.redirect("home");
+        return res.redirect("dashboard");
       });
     })
     .catch((err) => {
@@ -125,9 +124,10 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
   Developer.findByIdAndUpdate(req.session.user._id,{resume:req.body.resume},{new:true})
   .then((updatedUSer)=>{
     console.log(updatedUSer)
-    res.redirect("createResume")
+    res.redirect("/developer/createResume")
   })
 })
+
 
 
 //Log Out
