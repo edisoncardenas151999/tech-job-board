@@ -1,5 +1,5 @@
 {{!-- Job description --}}
-<a href="/dashboard" class="back-link">back</a>
+<a href="/" class="back-link">back</a>
 <div class="job-detail-container">
     <div class="job-info-header">
         <h3 class="job-title">{{job.jobTitle}}</h3>
@@ -14,6 +14,5 @@
 
 </div>
 <div class="apply-now-btn-wrapper">
-    <a href="/developer/login?applyto={{job._id}}" class="apply-now-btn">Apply Now</a>
-
+    <a href="/developer/apply/{{job._id}}" class="apply-now-btn">Apply Now</a>
 </div>

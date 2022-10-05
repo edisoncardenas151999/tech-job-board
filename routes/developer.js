@@ -5,6 +5,7 @@ const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Developer = require("../models/developer.model");
+const Job = require("../models/Job.model");
 
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
@@ -137,6 +138,29 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
     res.redirect("/developer/createResume")
   })
 })
+
+
+router.get("/apply/:id", isLoggedIn, (req,res)=>{
+    Developer.findById(req.session.user._id)
+    .then((updatedUser)=>{
+      const{id} = req.params
+      Job.findById(id)
+      .then((foundId)=>{
+        res.render("developer/application", {user:updatedUser, foundId})
+      })
+    })
+  })
+
+
+
+
+router.post("/apply/:id", isLoggedIn,(req, res) =>{
+  const{id} = req.params;
+  Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
+  .then((JobId)=>{
+   res.render("developer/my-jobs")
+  })
+});
 
 
 

@@ -15,10 +15,8 @@ const jobSchema = new Schema({
     salary: String,
     workHours: String,
     description: String,
+    applicants: [{type: Schema.Types.ObjectId, ref: 'Developer'}]
 
-    application: [{type: Schema.Types.ObjectId, ref: 'developer'}]
-
-})
 
 
 const Job = model('Job', jobSchema);
