@@ -15,6 +15,7 @@ const jobSchema = new Schema({
     salary: String,
     workHours: String,
     description: String,
+    application: [{type: Schema.Types.ObjectId, ref: 'developer'}]
 
 })
 

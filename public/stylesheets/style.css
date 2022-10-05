@@ -48,7 +48,7 @@
     margin: 10px;
     padding: 16px;
     border-radius: 8px;
-    transition: 0.9s;
+    transition: .15s;
   }
 
   ul li .nav-link:hover {
@@ -90,7 +90,7 @@
     font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.9s
+    transition: .15s
   }
 
   .drop-btn:hover {
@@ -98,14 +98,17 @@
     color: #fff;
   }
 
+  /* down triangle unicode */
   .drop-btn:after {
     content: ' \25BE';
   }
+
 
   .dropdown {
     position: relative;
     display: inline-block;
   }
+
 
   .dropdown-content {
     display: none;
@@ -170,7 +173,7 @@
     border-radius: 8px;
     background-color: #6f086f;
     color: #fff;
-    transition: 0.9s;
+    transition: .15s;
   }
 
   .job-search-btn:hover {
@@ -203,7 +206,7 @@
     border: 2px solid transparent;
     border-radius: 10px;
     position: relative;
-    transition: 0.9s;
+    transition: .15s;
   }
 
   .company-info:hover {
@@ -248,7 +251,7 @@
   .back-link {
     padding: 10px;
     color: #090962;
-    transition: 1s;
+    transition: .15s;
 
   }
 
@@ -273,7 +276,25 @@
 
   /********** form styles  ************/
 
+  .form-container {
+    text-align: center;
+  }
 
+  /* link styles  */
+
+  .signup-link,
+  .login-link {
+    color: #b58b20;
+  }
+
+  .form-container h2 {
+    color: #090962;
+    display: flex;
+    justify-content: center;
+    position: relative
+  }
+
+  /* form */
   .the-form {
     padding: 10px;
     width: 450px;
@@ -326,7 +347,7 @@
     padding: 8px 16px;
     text-transform: uppercase;
     width: 100%;
-    transition: 0.9s;
+    transition: .15s;
   }
 
   .the-form button:hover {
@@ -349,17 +370,6 @@
   .login-error {
     color: crimson;
   }
-
-
-
-  .form-container h2 {
-    color: #090962;
-    display: flex;
-    justify-content: center;
-    position: relative
-  }
-
-
 
   /******************************* Job description styles ****************************************** */
 
