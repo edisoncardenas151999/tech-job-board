@@ -263,12 +263,12 @@
   }
 
   #no-match-found {
-    font-size: 1.5em;
+    text-align: center;
     color: #090962;
 
   }
 
-  #no-match-back {
+  #no-match-found-back-btn {
     text-align: center;
 
   }
@@ -409,6 +409,11 @@
   #login-form {
 
     height: 250px;
+  }
+
+  .para-message {
+    color: #090962;
+    text-align: center;
   }
 
   /* label styles */
@@ -556,7 +561,10 @@
     ;
   }
 
-
+  /* error message styles */
+  .error-msg {
+    color: #090962;
+  }
 
   /*****************  end of job description styles  ********************/
 
