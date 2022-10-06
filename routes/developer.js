@@ -149,10 +149,8 @@ router.get("/apply/:id", isLoggedIn, (req,res)=>{
         res.render("developer/application", {user:updatedUser, foundId})
       })
     })
-  })
-
-
-
+  });
+  
 
 router.post("/apply/:id", isLoggedIn,(req, res) =>{
   const{id} = req.params;

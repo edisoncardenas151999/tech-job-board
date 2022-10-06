@@ -6,7 +6,7 @@
    {{else}}
    <a href="/developer/signup" class="signup-link">Don't have an account? Sign up</a>
    {{/if}}
-   <form action="/developer/login" method="POST" class="the-form" id="login-form">
+   <form action="/developer/login?applyto={{jobId}}" method="POST" class="the-form" id="login-form">
 
       <label> Email
          <input type="text" name="email">
