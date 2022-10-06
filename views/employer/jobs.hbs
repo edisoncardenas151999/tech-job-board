@@ -1,6 +1,6 @@
 <ul class="list-wrapper">
-{{#each user.jobs}}
-<li class="company-info">
+    {{#each user.jobs}}
+    <li class="company-info">
         <h3 class="list-company-job-title">{{this.jobTitle}}</h3>
         <h4 class="list-company-name">{{this.company}}</h4>
         <p class="list-company-location">{{this.location}}</p>
@@ -9,10 +9,10 @@
         <a href="/employer/{{_id}}/edit">Edit</a>
 
     </li>
-</div>
-{{/each}}
-<br>
-<a href="dashboard">back</a>
+    </div>
+    {{/each}}
+    <br>
+    <a href="dashboard" class="back-link">back</a>
 </ul>
 
 {{!-- <ul class="list-wrapper">

@@ -1,15 +1,16 @@
 {{#if user}}
-    <h1>Welcome  {{user.firstname}} </h1>
-  <form action='/employer/logout' method="POST">
-    <button>Logout</button>
-  </form>
-<br>
-<a href="createJobPost">Create Job Post</a>
-<br>
-<a href="jobs">View/Edit Job Post</a>
-<br>
+<form action='/employer/logout' method="POST">
+  <button class="logout-btn">Logout</button>
+</form>
+<div class="dashboard-page">
 
-{{else }}
-<br>
-<p>Please log in to show this page!</p>
-{{/if}}
+  <h2 class="dashboard-welcome-message">Welcome {{user.firstname}} </h2>
+  <a href="createJobPost" class="create-job-post">Create Job Post</a>
+  <br><br>
+  <a href="jobs" class="edit-job-post">View -Edit Job Post</a>
+
+  {{else }}
+  <br>
+  <h3 class="para-message">Please log in to view ,create or edit your job post!</h3>
+  {{/if}}
+</div>

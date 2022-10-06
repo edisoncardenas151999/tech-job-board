@@ -1,29 +1,35 @@
-
 {{#if user}}
-    <h1>Welcome, {{user.firstname}} </h1>
-  <form action='/developer/logout' method="POST">
-    <button>Logout</button>
-  </form>
+<form action='/developer/logout' method="POST">
+  <button class="logout-btn">Log out</button>
+</form>
 
-<label> Resume</label>
+<h2 class="dashboard-welcome-message">{{user.firstname}} {{user.lastname}} </h2>
+
 <div class="form-container">
-<form  action="/developer/createResume" method="POST" class="the-form">
-<textarea  name="resume" rows="10" cols="50" >
+  <h2 id="resume-title"> Resume</h2>
+  <form action="/developer/createResume" method="POST" class="the-form" id="create-resume-form">
+    <textarea name="resume" rows="10" cols="50" class="text-area">
 {{#if user.resume}}
 {{user.resume}}
 {{else}}
 Full name:
+
 Job:
+
 Education:
-Skills:
+
 Contact number:
+
+Skills:
+
 {{/if}}
 </textarea>
-<button>Save</button>
-</form>
+    <button id="create-resume-btn">Save</button>
+  </form>
 
-<a href="/developer/dashboard">back</a>
+  <a href="/developer/dashboard" class="back-link">back</a>
 
-{{else }}
-  <br><p>Please log in to show this page!</p>
-{{/if}}
+  {{else }}
+  <br>
+  <h3 class="para-message">Please log in to view or create resume!</h3>
+  {{/if}}

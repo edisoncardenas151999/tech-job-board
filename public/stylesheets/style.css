@@ -79,7 +79,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
-  /********************************************dropdow button *****************************************/
+  /*********************dropdow button **********************************/
 
   .drop-btn {
     background-color: rgba(249, 247, 247, 0.8);
@@ -96,6 +96,7 @@
   .drop-btn:hover {
     background-color: #090962;
     color: #fff;
+
   }
 
   /* down triangle unicode */
@@ -132,19 +133,21 @@
   .dropdown-content a:hover {
     background-color: #ddd;
 
+
   }
 
   .dropdown:hover .dropdown-content {
     display: block;
+    border-radius: 8px;
   }
 
 
-  /******************************************   end of dropdown   ***************************************/
+  /********************** end of dropdown **************************/
 
 
 
 
-  /**************************************  styles for job search section ************************************/
+  /****************** styles for job search section *********************/
   #job-search-section {
     width: 100%;
     background-color: #0c0c8f;
@@ -182,10 +185,10 @@
 
 
 
-  /**************    end of styles for job search section   ***************************************/
+  /************** end of styles for job search section ***************/
 
 
-  /* *********************************   styles for job search results   ****************************/
+  /* *************** styles for job search results   ****************************/
 
 
   /* unordered list styles */
@@ -260,22 +263,83 @@
   }
 
   #no-match-found {
-    font-size: 1.5em;
+    text-align: center;
     color: #090962;
 
   }
 
-  #no-match-back {
+  #no-match-found-back-btn {
     text-align: center;
 
   }
 
-  /**************************** end of styles for the job search results ****************************8*/
+  /*********** end of styles for the job search results ********************/
+
+  /* profile page */
+
+  .dashboard-page {
+    width: 300px;
+    height: 300px;
+    padding: 4px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px lightgrey;
+    margin: 0 auto;
+    text-align: center;
+    transition: .15s;
+
+  }
+
+  .dashboard-page:hover {
+    transform: translate(3px, 4px);
+  }
+
+  /* links inside dashboard */
+  .create-resume-link {
+    color: #b58b20;
+  }
+
+  .create-job-post {
+    color: #b58b20;
+
+  }
+
+  .edit-job-post {
+    color: #b58b20;
+  }
+
+  /* end of links inside dashboard */
+  /* welcome message when in profile */
+
+  .dashboard-welcome-message {
+    text-align: center;
+    margin-top: 50px;
+    padding: 5px;
+    color: #090962;
+  }
 
 
+  /* logout button style */
 
-  /********** form styles  ************/
+  .logout-btn {
+    width: 100px;
+    margin: 10px 0 0 10px;
+    padding: 5px 10px;
+    font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #090962;
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    transition: .15s;
+  }
 
+  .logout-btn:hover {
+    letter-spacing: 1px;
+  }
+
+  /*********** form styles  ********************/
+
+  /* align everything inside container */
   .form-container {
     text-align: center;
   }
@@ -294,7 +358,7 @@
     position: relative
   }
 
-  /* form */
+  /* form specs */
   .the-form {
     padding: 10px;
     width: 450px;
@@ -307,10 +371,52 @@
   }
 
 
-  #login-form {
+
+  /* change height of create-resume form */
+  #create-resume-form {
     height: 300px;
+
   }
 
+  /* create resume button */
+  #create-resume-btn {
+    margin-top: 50px;
+  }
+
+  /* change height of application form */
+  #application-form {
+    height: 500px;
+  }
+
+  #resume-title {
+    color: #b58b20;
+    ;
+  }
+
+  /* text area  */
+  .text-area {
+    letter-spacing: 1px;
+    outline: none;
+    border: none;
+    font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    width: 450px;
+    height: 200px;
+    box-sizing: border-box;
+  }
+
+  /* change height of login form */
+  #login-form {
+
+    height: 250px;
+  }
+
+  .para-message {
+    color: #090962;
+    text-align: center;
+  }
+
+  /* label styles */
   label {
     color: #666;
     display: inline-block;
@@ -319,6 +425,7 @@
     font-size: 18px;
 
   }
+
 
   .the-form input,
   .the-form button {
@@ -351,7 +458,7 @@
   }
 
   .the-form button:hover {
-    background-color: #321cd9;
+    background-color: #2612bb;
 
   }
 
@@ -371,7 +478,13 @@
     color: crimson;
   }
 
-  /******************************* Job description styles ****************************************** */
+  .application-message {
+    margin-top: 30px;
+    text-align: center;
+    color: #090962;
+  }
+
+  /*************** Job description styles ***************************** */
 
 
   /* general styles for job description wrapper */
@@ -448,8 +561,12 @@
     ;
   }
 
+  /* error message styles */
+  .error-msg {
+    color: #090962;
+  }
 
-  /***************************************  end of job description styles   ******************************************/
+  /*****************  end of job description styles  ********************/
 
 
 
