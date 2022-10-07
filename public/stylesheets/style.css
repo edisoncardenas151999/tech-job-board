@@ -333,7 +333,7 @@
     background-color: #fff;
     border: none;
     border-radius: 8px;
-    transition: .15s;
+    transition: letter-spacing .15s;
   }
 
   .logout-btn:hover {
