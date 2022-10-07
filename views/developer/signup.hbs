@@ -3,9 +3,6 @@
   <h2>Sign up as a Developer</h2>
   {{#if jobId}}
   <a href="/developer/login?applyto={{jobId}}" class="login-link">Already have an account? login</a>
-  {{else}}
-  <a href="/developer/login" class="login-link">Already have an account? login</a>
-  {{/if}}
   <form action="/developer/signup" method="POST" class="the-form">
 
     <label> First name
@@ -38,3 +35,38 @@
   </form>
 
 </div>
+
+ {{else}}
+
+ <a href="/developer/login" class="login-link">Already have an account? login</a>
+  <form action="/developer/signup" method="POST" class="the-form">
+
+    <label> First name
+      <input type="text" name="firstname" placeholder="firstname" required>
+    </label>
+
+    <label> Last name
+      <input type="text" name="lastname" placeholder="lastname" required>
+    </label>
+
+   <label> Contact number:
+      <input type="text" name="contact" placeholder="contact number" required>
+    </label>
+
+
+    <label> Email
+      <input type="email" name="email" placeholder="email" required>
+    </label>
+
+    <label> Password
+      <input type="password" name="password" placeholder="********" required>
+    </label>
+
+    <button type="submit">Create</button>
+    <br>
+
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+  {}
