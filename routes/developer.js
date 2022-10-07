@@ -168,6 +168,7 @@ router.post("/apply/:id", isLoggedIn,(req, res) =>{
 
 
 
+
 //Log Out
 router.post("/logout",isLoggedIn, (req, res, next) => {
   req.session.destroy(err => {
@@ -175,5 +176,8 @@ router.post("/logout",isLoggedIn, (req, res, next) => {
     res.redirect("/");
   });
 });
+
+
+
 
 module.exports = router;
