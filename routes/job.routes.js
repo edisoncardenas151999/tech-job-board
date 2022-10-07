@@ -22,12 +22,11 @@ router.get('/jobs/search', (req, res ) => {
  // GET route to see company details
 
 router.get('/jobs/:jobId', (req, res, ) => {
-    
+    // pass in current user in hbs
       const {jobId} = req.params;
-       
       Job.findById(jobId)
        .then( (jobDetails) => {
-        res.render('jobs/job-description', {job: jobDetails})
+        res.render('jobs/job-description', {job: jobDetails, user: req.session.user} )
        })
        .catch( (error) => {
         console.log('Error while retrieving the data from the DB: ', error);

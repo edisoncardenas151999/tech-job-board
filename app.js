@@ -26,8 +26,7 @@ const projectName = "project-2";
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
-
+app.locals.title = `${capitalized(projectName)}- Tech Job Board`;
 
 // 👇 Start handling routes here
 
