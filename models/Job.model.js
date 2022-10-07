@@ -16,8 +16,8 @@ const jobSchema = new Schema({
     workHours: String,
     description: String,
     applicants: [{type: Schema.Types.ObjectId, ref: 'Developer'}]
+})
 
-});
 
 const Job = model('Job', jobSchema);
 module.exports = Job;

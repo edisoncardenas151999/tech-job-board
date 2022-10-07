@@ -7,8 +7,7 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Employer = require("../models/employer.model")
 const Job = require("../models/Job.model");
-const { populate } = require("../models/developer.model");
-const { route } = require(".");
+
 
 
 
@@ -127,13 +126,12 @@ router.get("/createJobPost", isLoggedIn,(req, res) => {
 
 router.get("/jobs", isLoggedIn, (req,res)=>{
   console.log(req.session.user._id)
- Employer.findById(req.session.user._id)
+  Employer.findById(req.session.user._id)
  .populate('jobs')
   .then((updatedUser)=>{
    res.render("employer/jobs", {user:updatedUser})
   })
 })
-
  
 router.post("/createJobPost", isLoggedIn,(req, res) =>{
    const{ jobTitle, company, salary, description, location } = req.body
@@ -153,6 +151,7 @@ router.post("/createJobPost", isLoggedIn,(req, res) =>{
 router.get("/:id/edit", isLoggedIn, (req,res)=>{
   const { id } = req.params;
   Job.findById(id)
+  .populate('applicants')
   .then((foundJob)=>{
     console.log(foundJob)
     res.render("employer/job-edit", {user:foundJob})
@@ -168,6 +167,16 @@ router.post("/:id/edit", isLoggedIn,(req, res) =>{
   res.redirect("/employer/jobs")
 })
 });
+
+router.get("/:id/applicants", isLoggedIn, (req,res)=>{
+  const { id } = req.params;
+  Job.findById(id)
+  .populate('applicants')
+  .then((foundJob)=>{
+    console.log(foundJob)
+    res.render("employer/job-applicants", {user:foundJob})
+  })
+})
 
 
 

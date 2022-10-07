@@ -13,12 +13,21 @@ router.get("/dashboard", isLoggedIn,(req, res) => {
 });
 
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("developer/signup");
+  const jobId = req.query.applyto;
+  //  console.log('jobId:', jobId)
+   if(jobId){
+    console.log('job exists')
+    res.render("developer/signup", {jobId});
+   }
+   else{
+    res.render('developer/signup');
+   }
 });
 
 
+
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { firstname, lastname, password, email, resume } = req.body;
+  const { firstname, lastname, password, email, resume, contact } = req.body;
   if (!email) {
     return res.status(400).render("developer/signup", {
       errorMessage: "Please provide your email.",
@@ -53,11 +62,15 @@ router.post("/signup", isLoggedOut, (req, res) => {
           password: hashedPassword,
           email,
           resume,
+          contact,
         });
       })
       .then((user) => {
         req.session.user = user;
-        res.redirect("dashboard");
+        if(req.query.applyto){
+          res.render("developer/application", {user:req.session.user})
+        }
+        return res.redirect("dashboard")
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -78,12 +91,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 
-router.get("/login", (req, res) => {
-   
+
+router.get("/login", isLoggedOut, (req, res) => {
+
   const jobId = req.query.applyto;
-  //  console.log('jobId:', jobId)
    if(jobId){
-    console.log('job exists')
     res.render("developer/login", {jobId});
    }
    else{
@@ -97,8 +109,8 @@ router.get("/login", (req, res) => {
   //   }
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
+  console.log(req.query)
     const { email, password } = req.body;
-   
   if (!email) {
     return res
       .status(400)
@@ -119,7 +131,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
 
         req.session.user = user;
-        return res.redirect('application');
+        req.query.applyto 
+        if(req.query.applyto ){
+          res.render("developer/application", {user:req.session.user, jobId:req.query.applyto})
+        }
+       else { return res.redirect("dashboard");}
+
       });
     })
     .catch((err) => {
@@ -137,6 +154,7 @@ router.get("/createResume", isLoggedIn, (req,res)=>{
 })
 
 router.post("/createResume", isLoggedIn,(req, res)=>{
+  console.log("hi")
   Developer.findByIdAndUpdate(req.session.user._id,{resume:req.body.resume},{new:true})
   .then((updatedUSer)=>{
     console.log(updatedUSer)
@@ -146,26 +164,26 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
 
 
 router.get("/apply/:id", isLoggedIn, (req,res)=>{
-    Developer.findById(req.session.user._id)
-    .then((updatedUser)=>{
-      const{id} = req.params
-      Job.findById(id)
-      .then((foundId)=>{
-        res.render("developer/application", {user:updatedUser, foundId})
-      })
+  Developer.findById(req.session.user._id)
+  .then((updatedUser)=>{
+    const {id}= req.params
+    Job.findById(id)
+    .then((foundId)=>{
+      res.render("developer/application", {user:updatedUser, foundId})
     })
-  });
-  
+  })
+})
+
+
+
 
 router.post("/apply/:id", isLoggedIn,(req, res) =>{
-  const{id} = req.params;
-  Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
-  .then((JobId)=>{
-   res.render("developer/my-jobs")
-  })
+const {id} = req.params
+Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
+.then((JobId)=>{
+ res.render("developer/my-jobs")
+})
 });
-
-
 
 
 

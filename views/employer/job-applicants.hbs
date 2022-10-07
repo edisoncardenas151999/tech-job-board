@@ -1,0 +1,18 @@
+{{#if user.applicants}}
+<ul class="list-wrapper">
+    {{#each user.applicants}}
+    <li class="company-info">
+         <h3>{{this.firstname}} {{this.lastname}}</h3>
+           <h3>{{this.email}}</h3>
+           <h3>{{this.contact}}</h3>
+    </li>
+    {{/each}}
+    <br>
+</ul>
+{{else}}
+<ul class="list-wrapper">
+    <li class="company-info">
+        <h3>No applicants</h3>
+    </li>
+</ul>
+{{/if}}

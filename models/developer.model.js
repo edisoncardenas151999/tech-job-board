@@ -12,6 +12,7 @@ const DeveloperSchema = new Schema({
   email: String,
   password: String,
   resume: String,
+  contact: Number,
 }
 );
 
