@@ -91,7 +91,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 
+
 router.get("/login", isLoggedOut, (req, res) => {
+
   const jobId = req.query.applyto;
    if(jobId){
     res.render("developer/login", {jobId});
@@ -99,6 +101,12 @@ router.get("/login", isLoggedOut, (req, res) => {
    else{
     res.render('developer/login');
    }
+
+  //  router.post('/developer/login',( req, res, next) => {
+  //    const {jobId} = req.query.applyto;
+  //   if(jobId){
+  //     res.render('/developer/application', {jobId})
+  //   }
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
   console.log(req.query)
@@ -128,6 +136,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           res.render("developer/application", {user:req.session.user, jobId:req.query.applyto})
         }
        else { return res.redirect("dashboard");}
+
       });
     })
     .catch((err) => {
@@ -185,5 +194,8 @@ router.post("/logout",isLoggedIn, (req, res, next) => {
     res.redirect("/");
   });
 });
+
+
+
 
 module.exports = router;

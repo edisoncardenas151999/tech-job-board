@@ -1,9 +1,11 @@
 {{#if jobId}}
 <div class="form-container">
+
 <form action="/developer/apply/{{jobId}}" method="POST" class="the-form">
   <label>First Name:
     <input  type="text" name="jobTitle" value="{{user.firstname}}" />
   </label>
+
 
   <label>Last Name:
     <input type="text" name="company" value="{{user.lastname}}" />
