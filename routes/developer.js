@@ -67,10 +67,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
       })
       .then((user) => {
         req.session.user = user;
-        if(req.query.applyto){
-          res.render("developer/application", {user:req.session.user})
+        if(req.query.applyto ){
+          res.render("developer/application", {user:req.session.user, jobId:req.query.applyto})
         }
-        return res.redirect("dashboard")
+       else { return res.redirect("dashboard");}
+
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
