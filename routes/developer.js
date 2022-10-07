@@ -144,7 +144,12 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
   })
 })
 
+// router.get('/editProfile', (req, res, next ) =>{
 
+// })
+
+
+// router.post()
 router.get("/apply/:id", isLoggedIn, (req,res)=>{
     Developer.findById(req.session.user._id)
     .then((updatedUser)=>{

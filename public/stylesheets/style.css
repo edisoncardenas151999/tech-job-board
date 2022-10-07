@@ -48,7 +48,7 @@
     margin: 10px;
     padding: 16px;
     border-radius: 8px;
-    transition: .15s;
+    transition: background-color .15s;
   }
 
   ul li .nav-link:hover {
@@ -90,7 +90,7 @@
     font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 16px;
     cursor: pointer;
-    transition: .15s;
+    transition: background-color .15s;
 
   }
 
@@ -117,7 +117,7 @@
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    min-width: 102px;
     border-radius: 8px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -179,7 +179,7 @@
     border-radius: 8px;
     background-color: #6f086f;
     color: #fff;
-    transition: .15s;
+    transition: background-color .15s;
   }
 
   .job-search-btn:hover {
@@ -212,7 +212,7 @@
     border: 2px solid transparent;
     border-radius: 10px;
     position: relative;
-    transition: .15s;
+    transition: border .15s;
   }
 
   .company-info:hover {
@@ -241,7 +241,7 @@
     color: #fff;
     padding: 13px 20px;
     border-radius: 8px;
-    transition: 0.9s;
+    transition: background-color .15s;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -257,7 +257,7 @@
   .back-link {
     padding: 10px;
     color: #090962;
-    transition: .15s;
+    transition: text-decoration .15s;
 
   }
 
@@ -288,7 +288,7 @@
     box-shadow: 1px 1px 8px lightgrey;
     margin: 0 auto;
     text-align: center;
-    transition: .15s;
+    transition: transform .15s;
 
   }
 
@@ -333,7 +333,7 @@
     background-color: #fff;
     border: none;
     border-radius: 8px;
-    transition: .15s;
+    transition: letter-spacing .15s;
   }
 
   .logout-btn:hover {
