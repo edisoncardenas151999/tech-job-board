@@ -14,13 +14,14 @@
 
 </div>
 
-{{#if user.contact}}
+{{#if user}}
 <div class="apply-now-btn-wrapper">
- <a href="/developer/apply/{{job._id}}" class="apply-now-btn">Apply Now</a>
+    <a href="/developer/apply/{{job._id}}" class="apply-now-btn">Apply Now</a>
 </div>
 {{else}}
 <div class="apply-now-btn-wrapper">
  <a href="/developer/login?applyto={{job._id}}" class="apply-now-btn">Apply Now</a>
 </div>
 {{/if}}
+
 

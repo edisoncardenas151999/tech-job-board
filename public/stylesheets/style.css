@@ -361,10 +361,10 @@
     color: rgb(110, 70, 174);
   }
 
-  /* company location styles */
+  /* company location */
+
   .list-company-location {
-    margin-top: 2px;
-    color: rgb(115, 115, 115)
+    color: rgb(115, 115, 115);
   }
 
   /* description button styles */
@@ -630,7 +630,6 @@
 
   /* styles for header with general info about company */
   .job-info-header {
-
     padding: 10px;
     width: 100%;
     background-color: #f3f3f3;
