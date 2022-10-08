@@ -339,17 +339,20 @@
   /* job title styles */
   .list-company-job-title {
     margin-bottom: 5px;
+    color: rgb(61, 36, 98);
   }
 
   /* company name styles */
   .list-company-name {
     margin-top: 6px;
-    margin-bottom: 2px
+    margin-bottom: 2px;
+    color: rgb(110, 70, 174);
   }
 
   /* company location styles */
   .list-company-location {
     margin-top: 2px;
+    color: rgb(115, 115, 115);
   }
 
   /* description button styles */
@@ -615,7 +618,6 @@
 
   /* styles for header with general info about company */
   .job-info-header {
-
     padding: 10px;
     width: 100%;
     background-color: #f3f3f3;
