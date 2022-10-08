@@ -51,6 +51,7 @@
   }
 
   ul li .nav-link {
+    font-size: 18px;
     text-decoration: none;
     color: #090962;
     margin: 10px;
@@ -216,7 +217,7 @@
     border-radius: 8px;
     color: #090962;
     font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     cursor: pointer;
     transition: background-color .15s;
 
@@ -245,7 +246,7 @@
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 102px;
+    min-width: 105px;
     border-radius: 8px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -556,11 +557,18 @@
     box-sizing: border-box;
   }
 
+  /*  change height of developer signup form */
+  #dev-signup-form {
+    height: 500px;
+  }
+
   /* change height of login form */
   #login-form {
 
     height: 250px;
   }
+
+
 
   .para-message {
     color: #090962;
