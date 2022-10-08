@@ -7,8 +7,8 @@
   <title>{{title}}</title>
   <script src="https://kit.fontawesome.com/a0845a7593.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
-
 <body>
   <nav>
 
@@ -21,15 +21,37 @@
         <a href="/" class="nav-link">Home</a>
       </li>
 
-      <li>
+     {{#if user}}
+     {{#if user.contact}}
+     <li> 
+      <a class="nav-link" href="/developer/dashboard"> Profile </a>
+      </li>
+       <li> 
+        <form action='/developer/logout' class="nav-form" method="POST">
+        <button class="nav-link">Logout</button>
+        </form>
+        {{!-- <a class="nav-link" href="#">log out </a> --}}
+         </li>
+
+    {{else}}
+      <li> 
+      <a class="nav-link" href="/employer/dashboard">Dashboard</a>
+      </li>
+         <li> 
+        <form action='/employer/logout' class="nav-form" method="POST">
+        <button class="nav-link">Logout</button>
+        </form>
+        {{!-- <a class="nav-link" href="#">log out </a> --}}
+         </li>
+     {{/if}}
+      {{else}}
+       <li>
         <a href="/about" class="nav-link">About</a>
       </li>
 
       <li>
         <a href="/service" class="nav-link">Service</a>
       </li>
-
-
       <li class="dropdown">
         <button class="drop-btn">Developer</button>
         <div class="dropdown-content">
@@ -45,7 +67,7 @@
           <a href="/employer/login">Sign in</a>
         </div>
       </li>
-
+{{/if}}
     </ul>
   </nav>
 

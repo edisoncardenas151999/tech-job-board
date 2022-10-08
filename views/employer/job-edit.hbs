@@ -9,12 +9,17 @@
     <input type="text" name="company" value="{{user.company}}" />
   </label>
 
-  <label> Description:
-    <input name="description" cols="30" rows="4" value="{{user.description}}" />
-  </label>
+
+    <textarea rows="4" cols="50">
+Description:
+   {{user.description}}
+  
+    </textarea>
+    
+ 
 
   <label> Salary:
-    <input type="number" name="rating" min="1" max="10" value="{{user.salary}}" />
+    <input type="number" name="salary"  value="{{user.salary}}" step="10000"/>
   </label>
  
   <button>Save changes</button>

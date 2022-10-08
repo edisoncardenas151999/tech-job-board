@@ -5,17 +5,18 @@
          <input type="text" name="jobTitle">
       </label>
       <label> Company
-         <input type="text" name="company">
+         <input type="text" name="company" value="{{user.company}}">
       </label>
-      <label> salary
-         <input type="number" name="salary">
+      <label> Salary
+         <input type="number" name="salary" step="10000">
       </label>
       <label> Location
          <input type="text" name="location">
       </label>
-      <label> Description
-         <input type="text" name="description">
-      </label>
+      
+    <textarea rows="4" cols="50">
+Description:
+    </textarea>
       <button>Create</button>
    </form>
    <a href="dashboard" class="back-link">back </a>
