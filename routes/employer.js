@@ -35,7 +35,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
   if (!regex.test(password)) {
-   res.status(500).render("signup", {
+    return res.status(400).render("signup", {
       errorMessage:
         "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
     });
