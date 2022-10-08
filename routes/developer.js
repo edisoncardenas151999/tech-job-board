@@ -12,6 +12,16 @@ router.get("/dashboard", isLoggedIn,(req, res) => {
   res.render("developer/developer", {user:req.session.user})
 });
 
+router.get("/signup", isLoggedOut, (req, res) => {
+  const jobId = req.query.applyto;
+   if(jobId){
+    res.render("developer/signup", {jobId});
+   }
+   else{
+    res.render('developer/signup');
+   }
+});
+
 router.post("/signup", isLoggedOut, (req, res) => {
   const { firstname, lastname, password, email, resume, contact } = req.body;
   if (!email) {
@@ -19,7 +29,6 @@ router.post("/signup", isLoggedOut, (req, res) => {
       errorMessage: "Please provide your email.",
     });
   }
-
   if (password.length < 8) {
     return res.status(400).render("developer/signup", {
       errorMessage: "Your password needs to be at least 8 characters long.",
