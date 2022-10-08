@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const Job  = require("../models/Job.model.js")
 
-const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/project-2";
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/tech-job-board";
 
 mongoose
   .connect(MONGO_URI)
