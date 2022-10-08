@@ -194,6 +194,7 @@
 
   }
 
+
   /****** end of service pages *******/
 
   /**************  dropdow button nav-link styles ******************/
@@ -387,16 +388,33 @@
     text-decoration: underline;
   }
 
-  #no-match-found {
+  /*  no-match-found message */
+  .no-match-found-container {
+    width: 430px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px lightgrey;
+    margin: 50px auto 0 auto;
     text-align: center;
-    color: #090962;
+    padding: 30px;
+    background-color: #090962;
 
   }
 
-  #no-match-found-back-btn {
-    text-align: center;
-
+  .no-match-found-message {
+    width: 430px;
+    padding-top: 50px;
+    color: #fff;
   }
+
+  .no-match-found-message:after {
+    font-family: 'Font Awesome 5 free';
+    content: '  \f11a';
+    font-size: 40px;
+    font-weight: 900;
+    color: #5a0b5a;
+  }
+
 
   /*********** end of styles for the job search results ********************/
 
