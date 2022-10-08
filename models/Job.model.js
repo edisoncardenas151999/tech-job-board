@@ -5,11 +5,11 @@ const jobSchema = new Schema({
 
     jobTitle:{
         type: String,
-        lowercase: true
+       
     },
     company:{
         type: String,
-        lowercase: true
+        
     } ,
     location: String,
     salary: String,
