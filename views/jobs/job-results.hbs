@@ -1,5 +1,5 @@
 {{!-- Results for each individual company jobs --}}
-<a href="/" class="back-link" id="no-match-found-back-btn">back</a>
+<a href="/" class="back-link">back</a>
 <ul class="list-wrapper">
     {{#if jobs}}
     <h3 class="all-results">All results</h3>
@@ -13,6 +13,8 @@
     </li>
     {{/each}}
     {{else}}
-    <h3 id="no-match-found">No match found</h3>
+    <div class="no-match-found-container">
+        <h2 class="no-match-found-message">No match found.</h2>
+    </div>
     {{/if}}
 </ul>
