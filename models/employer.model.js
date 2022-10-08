@@ -11,7 +11,12 @@ const employerSchema = new Schema({
   },
   email: String,
   password: String,
-  jobs: [{type: Schema.Types.ObjectId, ref: 'Job'}]
+  jobs: [{type: Schema.Types.ObjectId, ref: 'Job'}],
+  userType: String,
+  company: {
+    type: String,
+    uppercase: true,
+  }
 }
 );
 

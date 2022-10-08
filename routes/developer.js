@@ -9,7 +9,13 @@ const Job = require("../models/Job.model");
 
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
-  res.render("developer/developer", {user:req.session.user})
+  if(req.session.user.userType === "developer"){
+    res.render("developer/dashboard", {user:req.session.user})
+  }
+  else if (req.session.user.userType === "employer"){
+    res.render("employer/dashboard", {user:req.session.user})
+  }
+    
 });
 
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -58,6 +64,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
           email,
           resume,
           contact,
+          userType: "developer"
         });
       })
       .then((user) => {
@@ -96,6 +103,7 @@ router.get("/login", isLoggedOut, (req, res) => {
    else{
     res.render('developer/login');
    }
+   
 
 });
 router.post("/login", isLoggedOut, (req, res, next) => {

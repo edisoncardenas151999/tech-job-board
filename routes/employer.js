@@ -12,8 +12,12 @@ const Job = require("../models/Job.model");
 
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
-  res.render("employer/employer", {user:req.session.user})
-
+  if(req.session.user.userType === "employer"){
+    res.render("employer/dashboard", {user:req.session.user})
+  }
+  else if (req.session.user.userType === "developer"){
+    res.render("developer/dashboard", {user:req.session.user})
+  }
 });
 
 router.get("/signup", isLoggedOut, (req, res) => {
@@ -21,7 +25,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { firstname, lastname, password, email } = req.body;
+  const { firstname, lastname, password, email, company} = req.body;
   if (!email) {
     return res.status(400).render("employer/signup", {
       errorMessage: "Please provide your email.",
@@ -55,6 +59,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
           lastname,
           email,
           password: hashedPassword,
+          company,
+          userType : "employer"
         });
       })
       .then((user) => {
@@ -78,8 +84,6 @@ router.post("/signup", isLoggedOut, (req, res) => {
       });
   });
 });
-
-
 router.get("/login", isLoggedOut, (req, res) => {
   res.render("employer/login");
 });
@@ -119,8 +123,9 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 
 router.get("/createJobPost", isLoggedIn,(req, res) => {
-  console.log(req.session.user.jobs)
- res.render("employer/job-post")})
+  console.log(req.session.user)
+ res.render("employer/job-post",{user:req.session.user})
+})
 
 
 
