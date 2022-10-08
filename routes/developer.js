@@ -12,20 +12,6 @@ router.get("/dashboard", isLoggedIn,(req, res) => {
   res.render("developer/developer", {user:req.session.user})
 });
 
-router.get("/signup", isLoggedOut, (req, res) => {
-  const jobId = req.query.applyto;
-  //  console.log('jobId:', jobId)
-   if(jobId){
-    console.log('job exists')
-    res.render("developer/signup", {jobId});
-   }
-   else{
-    res.render('developer/signup');
-   }
-});
-
-
-
 router.post("/signup", isLoggedOut, (req, res) => {
   const { firstname, lastname, password, email, resume, contact } = req.body;
   if (!email) {
@@ -92,7 +78,6 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 
-
 router.get("/login", isLoggedOut, (req, res) => {
 
   const jobId = req.query.applyto;
@@ -103,19 +88,14 @@ router.get("/login", isLoggedOut, (req, res) => {
     res.render('developer/login');
    }
 
-  //  router.post('/developer/login',( req, res, next) => {
-  //    const {jobId} = req.query.applyto;
-  //   if(jobId){
-  //     res.render('/developer/application', {jobId})
-  //   }
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
   console.log(req.query)
     const { email, password } = req.body;
-  if (!email) {
+  if (!email || !password) {
     return res
       .status(400)
-      .render("developer/login", { errorMessage: "Please provide your username." });
+      .render("developer/login", { errorMessage: "Please provide your email and password." });
   }
   Developer.findOne({ email })
     .then((user) => {
@@ -163,12 +143,7 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
   })
 })
 
-// router.get('/editProfile', (req, res, next ) =>{
 
-// })
-
-
-// router.post()
 router.get("/apply/:id", isLoggedIn, (req,res)=>{
   Developer.findById(req.session.user._id)
   .then((updatedUser)=>{
@@ -179,8 +154,6 @@ router.get("/apply/:id", isLoggedIn, (req,res)=>{
     })
   })
 })
-
-
 
 
 router.post("/apply/:id", isLoggedIn,(req, res) =>{

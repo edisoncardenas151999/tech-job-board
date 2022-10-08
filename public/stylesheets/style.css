@@ -6,7 +6,8 @@
     font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
   }
 
-  /*  navbar and nav-links */
+  /********  navbar and nav-links  *********/
+
 
   nav {
     width: 100%;
@@ -30,10 +31,18 @@
   }
 
   #logo {
+    margin-left: 5px;
     color: #090962;
     cursor: pointer;
   }
 
+  #company-name:before {
+    font-family: 'Font Awesome 5 free';
+    content: '\f2db';
+    font-weight: 900;
+    color: #090962;
+    font-size: 25px;
+  }
 
   nav ul li {
     list-style-type: none;
@@ -61,28 +70,136 @@
 
   }
 
-  .about-page,
-  .service-page {
+  /* ******** end of navbar styles  */
+
+
+  /******** about page styles ********/
+  .about-page-container {
+    width: 900px;
+    text-align: center;
+    margin: 30px auto 0 auto;
+    padding: 10px;
+
+  }
+
+  .hero {
+    width: 100%;
+    padding: 200px 0;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    text-align: center;
+  }
+
+  .about-heading {
+    margin-top: 100px;
+    display: inline-block;
+    width: 100px;
+    color: #090962;
+    padding: 10px 15px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background-color: rgb(245, 245, 245);
+  }
+
+  /*  server icon */
+  #server:after {
+    font-family: 'Font Awesome 5 free';
+    content: '\f233';
+    font-size: 40px;
+    font-weight: 900;
     color: #090962;
   }
 
-  .para-container {
-    text-align: center;
-    margin: 0 auto 0 auto;
-    width: 700px;
-    padding: 10px;
+  /* window icon */
+  #window-restore:after {
+    font-family: 'Font Awesome 5 free';
+    content: '\f2d2';
+    font-size: 40px;
+    font-weight: 900;
+    color: #090962;
   }
 
+  /* link to go to the top */
+  .top-link {
+    padding: 10px;
+    color: #090962;
+    transition: text-decoration .15s;
+  }
+
+  .top-link:hover {
+    text-decoration: underline;
+  }
+
+  /****** service page *******/
+  .service-page-container {
+    width: 900px;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    padding: 10px;
+
+  }
+
+  /* heading  styles*/
+  .service-heading {
+    padding: 10px;
+    margin-bottom: 50px;
+    color: #090962;
+  }
+
+  /* paragraph styles */
   .para {
     text-align: justify;
     line-height: 2em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
-  /*********************dropdow button **********************************/
+  /* computer icon */
+  #database:after {
+    font-family: 'Font Awesome 5 free';
+    font-size: 45px;
+    content: '\f1c0';
+    color: #090962;
+    font-weight: 900;
+
+
+  }
+
+  /* network icon */
+  #network-wired:after {
+    font-family: 'Font Awesome 5 free';
+    font-size: 40px;
+    content: '\f6ff';
+    color: #090962;
+    font-weight: 900;
+
+  }
+
+  /* tech guys image */
+  .service-page-container #tech {
+    width: 400px;
+    float: right;
+    border-radius: 8px;
+    margin: 13px 0 2px 20px;
+
+  }
+
+  /* keyboard image */
+  .service-page-container #keyboard {
+    width: 400px;
+    height: 266px;
+    float: left;
+    border-radius: 8px;
+    margin: 13px 20px 2px 0;
+
+  }
+
+  /****** end of service pages *******/
+
+  /**************  dropdow button nav-link styles ******************/
 
   .drop-btn {
-    background-color: rgba(249, 247, 247, 0.8);
+    background-color: rgba(249, 247, 247, 0);
     padding: 14px;
     border: none;
     border-radius: 8px;
@@ -145,15 +262,13 @@
   }
 
 
-  /********************** end of dropdown **************************/
+  /*************   end of dropdown nav-link styles  *****************/
 
 
-
-
-  /****************** styles for job search section *********************/
+  /************ styles for job search section  ************/
   #job-search-section {
     width: 100%;
-    background-color: #0c0c8f;
+    background-color: #090962;
     height: 250px;
     box-sizing: border-box;
     display: flex;
@@ -186,8 +301,6 @@
     background-color: #5a0b5a;
   }
 
-
-
   /************** end of styles for job search section ***************/
 
 
@@ -203,6 +316,10 @@
 
 
   /* container styles for each company*/
+  .all-results {
+    color: #090962;
+  }
+
   .company-info {
     width: 300px;
     margin-bottom: 20px;
@@ -281,7 +398,7 @@
   /* profile page */
 
   .dashboard-page {
-    width: 300px;
+    width: 350px;
     height: 300px;
     padding: 4px;
     border-radius: 8px;
@@ -298,16 +415,16 @@
 
   /* links inside dashboard */
   .create-resume-link {
-    color: #b58b20;
+    color: #cea135;
   }
 
   .create-job-post {
-    color: #b58b20;
+    color: #cea135;
 
   }
 
   .edit-job-post {
-    color: #b58b20;
+    color: #cea135;
   }
 
   /* end of links inside dashboard */
@@ -351,7 +468,7 @@
 
   .signup-link,
   .login-link {
-    color: #b58b20;
+    color: #cea135
   }
 
   .form-container h2 {
@@ -373,8 +490,6 @@
     position: relative;
   }
 
-
-
   /* change height of create-resume form */
   #create-resume-form {
     height: 300px;
@@ -392,7 +507,7 @@
   }
 
   #resume-title {
-    color: #b58b20;
+    color: #cea135;
     ;
   }
 
@@ -448,7 +563,7 @@
 
   .the-form button {
 
-    background: #180b75;
+    background: #090962;
     border-radius: 5px;
     border: none;
     color: #fff;
@@ -461,7 +576,7 @@
   }
 
   .the-form button:hover {
-    background-color: #2612bb;
+    background-color: #131397;
 
   }
 
@@ -481,11 +596,6 @@
     color: crimson;
   }
 
-  .application-message {
-    margin-top: 30px;
-    text-align: center;
-    color: #090962;
-  }
 
   /*************** Job description styles ***************************** */
 
@@ -564,6 +674,47 @@
     ;
   }
 
+  /* application form */
+  #application {
+    height: 600px;
+  }
+
+  .submission-container {
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px lightgrey;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    padding: 30px;
+    background-color: #090962;
+
+
+  }
+
+  .application-message {
+    padding-top: 50px;
+    color: #fff;
+  }
+
+  .application-message:after {
+    font-family: 'Font Awesome 5 free';
+    content: '  \f118';
+    font-size: 40px;
+    font-weight: 900;
+    color: #5a0b5a;
+
+  }
+
+  .cancel-btn {
+    color: #090962;
+    transition: color .15s;
+  }
+
+  .cancel-btn:hover {
+    color: crimson;
+  }
+
   /* error message styles */
   .error-msg {
     color: #090962;
@@ -574,7 +725,13 @@
 
 
 
-  /*  Footer */
+
+
+
+
+
+
+  /* *Footer */
 
   /* 
   #profile {
