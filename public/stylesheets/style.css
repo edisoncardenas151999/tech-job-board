@@ -351,6 +351,11 @@
     color: rgb(110, 70, 174);
   }
 
+  /* company location */
+
+  .list-company-location {
+    color: rgb(115, 115, 115);
+  }
 
   /* description button styles */
   .job-details-btn {
