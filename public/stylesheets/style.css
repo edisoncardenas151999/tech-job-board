@@ -680,7 +680,7 @@
   }
 
   .submission-container {
-    width: 400px;
+    width: 430px;
     height: 200px;
     border-radius: 10px;
     box-shadow: 1px 1px 8px lightgrey;
@@ -693,6 +693,7 @@
   }
 
   .application-message {
+    width: 430px;
     padding-top: 50px;
     color: #fff;
   }
