@@ -12,7 +12,7 @@ router.get('/jobs/search', (req, res ) => {
       
       ]})
       . then ( (results) => {
-        res.render('jobs/job-results', {jobs:results})
+        res.render('jobs/job-results', {jobs:results,user: req.session.user})
       })
       .catch( (error) => {
         console.log('Error while getting the data from the DB: ', error);
