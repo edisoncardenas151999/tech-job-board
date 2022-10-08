@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    console.log("project-2 JS imported successfully!");
+    console.log("tech-job-board JS imported successfully!");
   },
   false
 );

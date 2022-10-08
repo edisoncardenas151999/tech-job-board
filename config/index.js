@@ -50,7 +50,7 @@ module.exports = (app) => {
         maxAge: 600000
       }, // ADDED code below !!!
       store: MongoStore.create({
-        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/project-2'
+        mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/tech-job-board'
 
       }),
     })
