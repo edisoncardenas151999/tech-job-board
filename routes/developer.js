@@ -172,12 +172,11 @@ router.get("/apply/:id", isLoggedIn, (req,res)=>{
   })
 })
 
-
 router.post("/apply/:id", isLoggedIn,(req, res) =>{
 const {id} = req.params
 Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
 .then((JobId)=>{
- res.render("developer/my-jobs")
+ res.render("developer/my-jobs", {user:req.session.user})
 })
 });
 

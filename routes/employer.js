@@ -39,7 +39,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
   if (!regex.test(password)) {
-    return res.status(400).render("signup", {
+    res.status(500).render("signup", {
       errorMessage:
         "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
     });
@@ -84,6 +84,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
       });
   });
 });
+
+
 router.get("/login", isLoggedOut, (req, res) => {
   res.render("employer/login");
 });
@@ -177,14 +179,37 @@ router.get("/:id/applicants", isLoggedIn, (req,res)=>{
   const { id } = req.params;
   Job.findById(id)
   .populate('applicants')
-  .then((foundJob)=>{
-    console.log(foundJob)
-    res.render("employer/job-applicants", {user:foundJob})
+  .then((foundApplicants)=>{
+    console.log(foundApplicants)
+    res.render("employer/job-applicants", {applicants:foundApplicants.applicants, user:req.session.user})
   })
 })
 
 
 
+router.get("/createJobPost", isLoggedIn,(req, res) => {
+  res.render("employer/job-post", {user:req.session.user})
+});
+
+router.post("/createJobPost", isLoggedIn,(req, res) => {
+ const{jobTitle,salary,company,description} = req.body
+  Job.create({jobTitle,salary,company,description})
+  .then( (jobFromDB) => {
+    console.log(jobFromDB._id)
+    console.log(req.session.user.jobs)
+    const jobs = [...req.session.user.jobs, jobFromDB._id]
+    console.log(jobs)
+    Employer.findByIdAndUpdate(req.session.user._id, { jobs })
+    .then((updatedEmployer)=>{
+      req.session.user = {...updatedEmployer}
+      console.log(req.session.user.name)
+      console.log(req.session.user)
+    })
+  })
+  .catch( (error) => {
+    console.log('Error while inserting jobs to the DB: ', error);
+  });
+});
 //Log Out
 router.post("/logout",isLoggedIn, (req, res, next) => {
   req.session.destroy(err => {
