@@ -51,7 +51,7 @@
   }
 
   ul li .nav-link {
-    font-size: 18px;
+    /* font-size: 18px; */
     text-decoration: none;
     color: #090962;
     margin: 10px;
@@ -60,17 +60,18 @@
     transition: background-color .15s;
   }
 
-.nav-form .nav-link{
-  border: none;
-  background: none;
-  font-family: "Ubuntu Condensed", "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-size: inherit;
-  cursor: pointer;
-}
+  .nav-form .nav-link {
+    border: none;
+    background: none;
+    font-family: "Ubuntu Condensed", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: inherit;
+    cursor: pointer;
+  }
 
-.nav-form{
-  display: inline;
-}
+  .nav-form {
+    display: inline;
+  }
+
   ul li .nav-link:hover {
     background-color: #090962;
     color: #fff;
@@ -80,6 +81,10 @@
     text-decoration: none;
 
   }
+
+  /* #logout-btn {
+    font-size: 18px;
+  } */
 
   /* ******** end of navbar styles  */
 
@@ -217,7 +222,7 @@
     border-radius: 8px;
     color: #090962;
     font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color .15s;
 
@@ -553,7 +558,25 @@
     font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 14px;
     width: 450px;
+    padding: 8px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 4px;
     height: 200px;
+    box-sizing: border-box;
+  }
+
+  /* create post text area styles */
+
+  .create-post-text-area {
+    letter-spacing: 1px;
+    outline: none;
+    width: 450px;
+    padding: 10px;
+    border: none;
+    font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 4px;
     box-sizing: border-box;
   }
 
