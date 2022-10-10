@@ -26,7 +26,7 @@ router.get('/jobs/:jobId', (req, res, ) => {
       const {jobId} = req.params;
       Job.findById(jobId)
        .then( (jobDetails) => {
-        if(req.session.user.userType == "employer"){
+        if(req.session.user && req.session.user.userType === 'employer'){
           res.render("jobs/job-error", {user: req.session.user})
         }
         else {
