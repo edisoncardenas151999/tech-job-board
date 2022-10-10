@@ -1,14 +1,13 @@
+ <title>Application</title>
 {{#if jobId}}
 <div class="form-container">
 
   <form action="/developer/apply/{{jobId}}" method="POST" class="the-form" id="application">
     <label>First Name:
-      <input type="text" name="jobTitle" value="{{user.firstname}}" />
+      <input type="text" name="firstname" value="{{user.firstname}}" />
     </label>
-
-
     <label>Last Name:
-      <input type="text" name="company" value="{{user.lastname}}" />
+      <input type="text" name="lastname" value="{{user.lastname}}" />
     </label>
     <label> Email:
       <input type="text" name="email" cols="30" rows="4" value="{{user.email}}" />
@@ -41,11 +40,11 @@ Contact number:
 <div class="form-container">
   <form action="/developer/apply/{{foundId._id}}" method="POST" class="the-form" id="application">
     <label>First Name:
-      <input type="text" name="jobTitle" value="{{user.firstname}}" />
+      <input type="text" name="firstname" value="{{user.firstname}}" />
     </label>
 
     <label>Last Name:
-      <input type="text" name="company" value="{{user.lastname}}" />
+      <input type="text" name="lastname" value="{{user.lastname}}" />
     </label>
     <label> Email:
       <input type="text" name="email" cols="30" rows="4" value="{{user.email}}" />
