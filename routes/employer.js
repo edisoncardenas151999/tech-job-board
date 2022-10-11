@@ -210,6 +210,24 @@ router.post("/createJobPost", isLoggedIn,(req, res) => {
     console.log('Error while inserting jobs to the DB: ', error);
   });
 });
+
+// delete account
+ 
+router.post('/dashboard/:userId/delete', (req, res, next) => {
+   console.log(`employer id: ${req.params.userId}`)
+   const {userId} =req.params;
+
+   Employer.findByIdAndDelete()
+   .then( () => {
+    console.log('employer deleted.')
+    req.session.destroy( (error) => {
+      if(error){
+        next(error);
+      }
+      res.redirect('/');
+    })
+   })
+})
 //Log Out
 router.post("/logout",isLoggedIn, (req, res, next) => {
   req.session.destroy(err => {
