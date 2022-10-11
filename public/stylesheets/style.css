@@ -794,6 +794,16 @@
 
   }
 
+  .application-error {
+    background-color: crimson;
+    width: 100%;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+
+  }
+
   .cancel-btn {
     color: #090962;
     transition: color .15s;
