@@ -1,4 +1,4 @@
- <title>Jobs</title>
+<title>Jobs</title>
 <ul class="list-wrapper">
     {{#if user.jobs}}
     {{#each user.jobs}}
@@ -9,19 +9,19 @@
         <p class="list-company-description">{{this.description}}</p>
         <a href="/employer/{{_id}}/edit">Edit</a>
         <br>
-         <a href="/employer/{{_id}}/applicants">View Applicants</a>
+        <a href="/employer/{{_id}}/applicants">View Applicants</a>
 
     </li>
     </div>
     {{/each}}
     {{else}}
-
+    <a href="dashboard" class="back-link">back</a>
     <div class="submission-container">
-    <h2 class="application-message">No jobs Found, Create New Job Post</h2>
-</div>
+        <h2 class="application-message">No jobs Found, Create New Job Post</h2>
+    </div>
     {{/if}}
     <br>
-    <a href="dashboard" class="back-link">back</a>
+
 </ul>
 {{!-- <ul class="list-wrapper">
     {{#if jobs}}
