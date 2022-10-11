@@ -1,8 +1,9 @@
 {{!-- Results for each individual company jobs --}}
 <a href="/" class="back-link">back</a>
+{{#if jobs}}
+<h3 class="all-results">All results</h3>
 <ul class="list-wrapper">
-    {{#if jobs}}
-    <h3 class="all-results">All results</h3>
+
     {{#each jobs}}
     <li class="company-info">
         <h3 class="list-company-job-title">{{this.jobTitle}}</h3>
