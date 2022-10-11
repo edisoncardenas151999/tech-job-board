@@ -1,6 +1,6 @@
 // We reuse this import in order to have access to the `body` property in requests
 const express = require("express");
-const cors = require("cors");
+// const cors = require("cors");
 // ℹ️ Responsible for the messages you see in the terminal as requests are coming in
 // https://www.npmjs.com/package/morgan
 const logger = require("morgan");
@@ -20,14 +20,14 @@ const path = require("path");
 // Middleware configuration
 module.exports = (app) => {
 
-  app.use(
-    cors({
-      origin: ["http://localhost:3000", process.env.ORIGIN],
-    })
-  );
+  // app.use(
+  //   cors({
+  //     origin: ["http://localhost:3000", process.env.ORIGIN],
+  //   })
+  // );
   
 
-  app.use(logger("dev"));
+  // app.use(logger("dev"));
 
   // To have access to `body` property in the request
   app.use(express.json());

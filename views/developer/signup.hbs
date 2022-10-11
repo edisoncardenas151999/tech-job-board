@@ -40,7 +40,7 @@
 {{else}}
 
 <a href="/developer/login" class="login-link">Already have an account? login</a>
-<form action="/developer/signup" method="POST" class="the-form">
+<form action="/developer/signup" method="POST" class="the-form" id="dev-signup-form ">
 
   <label> First name
     <input type="text" name="firstname" placeholder="firstname" required>
@@ -66,8 +66,9 @@
   <button type="submit">Create</button>
   <br>
 
-</form>
- {{/if}}
- {{#if errorMessage}}
+{{#if errorMessage}}
   <p class="error">{{errorMessage}}</p>
   {{/if}}
+</form>
+ {{/if}}
+ 
