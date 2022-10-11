@@ -1,12 +1,13 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
+const mongoose= require('mongoose');
 const { redirect } = require("express/lib/response");
 const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Developer = require("../models/developer.model");
 const Job = require("../models/Job.model");
-require('../db');
+
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
   if(req.session.user.userType === "developer"){
@@ -160,6 +161,27 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
   })
 })
  
+router.post('/dashboard/:userId/delete', (req, res, next) => {
+   console.log(req.params);
+   const {userId} = req.params;
+
+   Developer.findByIdAndDelete(userId)
+    .then( () => {
+      console.log('Developer deleted.');
+      req.session.destroy( (error) => {
+        if(error){
+          next(error)
+        }
+        res.redirect('/');
+      })
+     
+    })
+    .catch( (error) => {
+      console.log('Error while deleting user: ', error)
+    })
+});
+
+
 router.get("/apply/:id", isLoggedIn, (req,res)=>{
   Developer.findById(req.session.user._id)
   .then((updatedUser)=>{
