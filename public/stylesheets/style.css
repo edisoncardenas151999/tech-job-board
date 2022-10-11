@@ -459,8 +459,8 @@
   /* delete account button styles */
 
   .delete-account-btn {
-    color: #cea135;
-    background-color: #fff;
+    color: #fff;
+    background-color: #090962;
     border: none;
     border-radius: 8px;
     padding: 10px 15px;
@@ -472,7 +472,7 @@
 
   .delete-account-btn:hover {
     background-color: crimson;
-    color: #fff;
+
   }
 
 
