@@ -326,20 +326,24 @@
 
   /* unordered list styles */
   .list-wrapper {
-    margin-left: 10px;
+    width: 800px;
+    margin: 30px auto 0 auto;
     padding: 10px;
     list-style-type: none;
-  }
+    display: flex;
+    flex-wrap: wrap;
 
+  }
 
   /* container styles for each company*/
   .all-results {
     color: #090962;
+    text-align: center;
   }
 
   .company-info {
     width: 300px;
-    margin-bottom: 20px;
+    margin: 15px;
     padding: 10px;
     height: 200px;
     box-shadow: 0px 0px 7px lightgrey;
@@ -451,6 +455,25 @@
   .dashboard-page:hover {
     transform: translate(3px, 4px);
   }
+
+  /* delete account button styles */
+
+  .delete-account-btn {
+    background-color: #090962;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    margin-top: 75px;
+    transition: background-color .15s;
+  }
+
+  .delete-account-btn:hover {
+    background-color: #131397;
+  }
+
 
   /* links inside dashboard */
   .create-resume-link {
@@ -783,6 +806,7 @@
   .error-msg {
     color: #090962;
   }
+
 
   /*****************  end of job description styles  ********************/
 

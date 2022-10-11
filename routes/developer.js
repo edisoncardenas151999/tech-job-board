@@ -6,7 +6,7 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Developer = require("../models/developer.model");
 const Job = require("../models/Job.model");
-
+require('../db');
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
   if(req.session.user.userType === "developer"){
@@ -159,8 +159,7 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
     res.redirect("/developer/createResume")
   })
 })
-
-
+ 
 router.get("/apply/:id", isLoggedIn, (req,res)=>{
   Developer.findById(req.session.user._id)
   .then((updatedUser)=>{
