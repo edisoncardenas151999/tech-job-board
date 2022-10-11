@@ -217,7 +217,7 @@ router.post('/dashboard/:userId/delete', (req, res, next) => {
    console.log(`employer id: ${req.params.userId}`)
    const {userId} =req.params;
 
-   Employer.findByIdAndDelete()
+   Employer.findByIdAndDelete(userId)
    .then( () => {
     console.log('employer deleted.')
     req.session.destroy( (error) => {
