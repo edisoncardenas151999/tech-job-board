@@ -1,17 +1,12 @@
 const { Schema, model } = require("mongoose");
 
 const DeveloperSchema = new Schema({
-  firstname: {
+  firstname:  String,
+  lastname:  String,
+  email: {
     type: String,
     unique: true,
- 
   },
- lastname: {
-    type: String,
-    unique: true,
-
-  },
-  email: String,
   password: String,
   resume: String,
   contact: Number,

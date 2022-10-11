@@ -52,7 +52,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("developer/signup", { errorMessage: "Username already taken." });
+        .render("developer/signup", { errorMessage: "Email already taken." });
     }
     return bcrypt
       .genSalt(saltRounds)
@@ -85,7 +85,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res
             .status(400)
-            .render("developer/signup", { errorMessage: "Username need to be unique. The username you chose is already in use." });
+            .render("developer/signup", { errorMessage: "Email need to be unique. The Email you chose is already in use." });
         }
         return res
           .status(500)

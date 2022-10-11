@@ -26,17 +26,11 @@ router.get('/jobs/:jobId', (req, res, ) => {
       const {jobId} = req.params;
       Job.findById(jobId)
        .then( (jobDetails) => {
-        if(req.session.user && req.session.user.userType === 'employer'){
-          res.render("jobs/job-error", {user: req.session.user})
-        }
-        else {
-          res.render('jobs/job-description', {job: jobDetails, user: req.session.user} )
-        }
+        res.render('jobs/job-description', {job: jobDetails, user: req.session.user})
        })
        .catch( (error) => {
         console.log('Error while retrieving the data from the DB: ', error);
        });
 });
-
 
 module.exports = router;
