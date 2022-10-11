@@ -195,12 +195,20 @@ router.get("/apply/:id", isLoggedIn, (req,res)=>{
 
 router.post("/apply/:id", isLoggedIn,(req, res) =>{
 const {id} = req.params
+Job.findById(id)
+.then((foundId)=>{
+  if (foundId.applicants.includes(req.session.user._id)) {
+    return res
+      .status(400)
+      .render("developer/application-error", {user:req.session.user, errorMessage: "already applied to this job." });
+  }
 Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
 .then((JobId)=>{
  res.render("developer/my-jobs", {user:req.session.user})
+  
 })
 });
-
+})
 
 
 //Log Out

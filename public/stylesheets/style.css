@@ -91,7 +91,7 @@
 
   /******** about page styles ********/
   .about-page-container {
-    width: 900px;
+    max-width: 900px;
     text-align: center;
     margin: 30px auto 0 auto;
     padding: 10px;
