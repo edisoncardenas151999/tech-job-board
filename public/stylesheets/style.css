@@ -35,12 +35,13 @@
     cursor: pointer;
   }
 
-  #company-name:before {
+  #logo:before {
     font-family: 'Font Awesome 5 free';
     content: '\f2db';
     font-weight: 900;
     color: #090962;
     font-size: 25px;
+    margin-right: 8px;
   }
 
   nav ul li {
@@ -291,6 +292,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+  }
+
+  .search-jobs-heading {
+    color: #fff;
 
   }
 
@@ -791,6 +797,16 @@
     font-size: 40px;
     font-weight: 900;
     color: #5a0b5a;
+
+  }
+
+  .application-error {
+    background-color: crimson;
+    width: 100%;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
 
   }
 

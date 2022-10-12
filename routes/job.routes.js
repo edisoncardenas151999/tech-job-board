@@ -11,8 +11,16 @@ router.get('/jobs/search', (req, res ) => {
         {company: {'$regex':query, '$options':'i'}}
       
       ]})
-      . then ( (results) => {
-        res.render('jobs/job-results', {jobs:results,user: req.session.user,  title:"Job Results"})
+      .then( (results) => {
+
+        if(!results){
+
+          Job.find({}).limit(2)
+          .then( (jobsFromDB)=> {
+            res.render('jobs/job-results',{otherJobs:jobsFromDB, user: req.session.user,  title:"Job Results"} )
+          })
+        }
+        res.render('jobs/job-results', {jobs:results,user: req.session.user, title:"Job Results"})
       })
       .catch( (error) => {
         console.log('Error while getting the data from the DB: ', error);
