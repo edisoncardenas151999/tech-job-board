@@ -1,3 +1,4 @@
+
 const router = require('express').Router();
 const Job = require('../models/Job.model');
 
@@ -14,13 +15,13 @@ router.get('/jobs/search', (req, res ) => {
       .then( (results) => {
 
         if(!results){
-
+              console.log('no results')
           Job.find({}).limit(2)
           .then( (jobsFromDB)=> {
-            res.render('jobs/job-results',{otherJobs:jobsFromDB} )
+            res.render('jobs/other-jobs',{otherJobs:jobsFromDB, user:req.session.user} )
           })
         }
-        res.render('jobs/job-results', {jobs:results,user: req.session.user})
+        res.render('jobs/job-results', {jobs:results, user:req.session.user})
       })
       .catch( (error) => {
         console.log('Error while getting the data from the DB: ', error);
