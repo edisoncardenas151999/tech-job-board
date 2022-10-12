@@ -1,4 +1,4 @@
- <title>Application</title>
+<title>Application</title>
 {{#if jobId}}
 <div class="form-container">
 
@@ -31,6 +31,9 @@ Contact number:
     </label>
     <button class="apply-now-btn">Apply</button>
     <a href="/">Cancel</a>
+    {{#if errorMessage}}
+    <p class="application-error">{{errorMessage}}</p>
+    {{/if}}
   </form>
 </div>
 {{/if}}
@@ -67,6 +70,9 @@ Contact number:
     </label>
     <button class="apply-now-btn">Apply</button>
     <a href="/" class="cancel-btn">Cancel</a>
+    {{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+    {{/if}}
   </form>
 </div>
 {{/if}}

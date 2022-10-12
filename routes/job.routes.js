@@ -11,7 +11,15 @@ router.get('/jobs/search', (req, res ) => {
         {company: {'$regex':query, '$options':'i'}}
       
       ]})
-      . then ( (results) => {
+      .then( (results) => {
+
+        if(!results){
+
+          Job.find({}).limit(2)
+          .then( (jobsFromDB)=> {
+            res.render('jobs/job-results',{otherJobs:jobsFromDB} )
+          })
+        }
         res.render('jobs/job-results', {jobs:results,user: req.session.user})
       })
       .catch( (error) => {
