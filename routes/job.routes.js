@@ -12,7 +12,7 @@ router.get('/jobs/search', (req, res ) => {
       
       ]})
       . then ( (results) => {
-        res.render('jobs/job-results', {jobs:results,user: req.session.user})
+        res.render('jobs/job-results', {jobs:results,user: req.session.user,  title:"Job Results"})
       })
       .catch( (error) => {
         console.log('Error while getting the data from the DB: ', error);
@@ -26,7 +26,7 @@ router.get('/jobs/:jobId', (req, res, ) => {
       const {jobId} = req.params;
       Job.findById(jobId)
        .then( (jobDetails) => {
-        res.render('jobs/job-description', {job: jobDetails, user: req.session.user})
+        res.render('jobs/job-description', {job: jobDetails, user: req.session.user,  title:"Job Description"})
        })
        .catch( (error) => {
         console.log('Error while retrieving the data from the DB: ', error);

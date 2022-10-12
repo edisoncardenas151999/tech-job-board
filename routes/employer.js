@@ -13,15 +13,15 @@ const Job = require("../models/Job.model");
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
   if(req.session.user.userType === "employer"){
-    res.render("employer/dashboard", {user:req.session.user})
+    res.render("employer/dashboard", {user:req.session.user,title:"Dashboard"})
   }
   else if (req.session.user.userType === "developer"){
-    res.render("developer/dashboard", {user:req.session.user})
+    res.render("developer/dashboard", {user:req.session.user, title:"Dashboard"})
   }
 });
 
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("employer/signup");
+  res.render("employer/signup", {title:"Employer Sign up"});
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
@@ -87,7 +87,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
 
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("employer/login");
+  res.render("employer/login", {title:"Employer Log in"});
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
@@ -126,7 +126,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 router.get("/createJobPost", isLoggedIn,(req, res) => {
   console.log(req.session.user)
- res.render("employer/job-post",{user:req.session.user})
+ res.render("employer/job-post",{user:req.session.user, title:"Create Job Post"})
 })
 
 
@@ -136,7 +136,7 @@ router.get("/jobs", isLoggedIn, (req,res)=>{
   Employer.findById(req.session.user._id)
  .populate('jobs')
   .then((updatedUser)=>{
-   res.render("employer/jobs", {user:updatedUser})
+   res.render("employer/jobs", {user:updatedUser, title:"Jobs"})
   })
 })
  
@@ -161,7 +161,7 @@ router.get("/:id/edit", isLoggedIn, (req,res)=>{
   .populate('applicants')
   .then((foundJob)=>{
     console.log(foundJob)
-    res.render("employer/job-edit", {user:foundJob})
+    res.render("employer/job-edit", {user:foundJob, title:"Edit Job"})
   })
 })
  
@@ -181,15 +181,9 @@ router.get("/:id/applicants", isLoggedIn, (req,res)=>{
   .populate('applicants')
   .then((foundApplicants)=>{
     console.log(foundApplicants)
-    res.render("employer/job-applicants", {applicants:foundApplicants.applicants, user:req.session.user})
+    res.render("employer/job-applicants", {applicants:foundApplicants.applicants, user:req.session.user, title:"Applicants"})
   })
 })
-
-
-
-router.get("/createJobPost", isLoggedIn,(req, res) => {
-  res.render("employer/job-post", {user:req.session.user})
-});
 
 router.post("/createJobPost", isLoggedIn,(req, res) => {
  const{jobTitle,salary,company,description} = req.body

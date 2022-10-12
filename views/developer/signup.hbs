@@ -38,25 +38,23 @@
 </div>
 
 {{else}}
-
+<div class="form-container">
 <a href="/developer/login" class="login-link">Already have an account? login</a>
 <form action="/developer/signup" method="POST" class="the-form" id="dev-signup-form ">
 
   <label> First name
-    <input type="text" name="firstname" placeholder="firstname" required>
+    <input type="text" name="firstname" placeholder="John" required>
   </label>
 
   <label> Last name
-    <input type="text" name="lastname" placeholder="lastname" required>
+    <input type="text" name="lastname" placeholder="Doe" required>
   </label>
 
   <label> Contact number:
-    <input type="text" name="contact" placeholder="contact number" required>
+    <input type="text" name="contact" placeholder="(123) 456-7890" required>
   </label>
-
-
   <label> Email
-    <input type="email" name="email" placeholder="email" required>
+    <input type="email" name="email" placeholder="jane@email.com" required>
   </label>
 
   <label> Password
@@ -71,4 +69,4 @@
   {{/if}}
 </form>
  {{/if}}
- 
+ </div>
