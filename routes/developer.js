@@ -202,7 +202,6 @@ Job.findById(id)
 Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
 .then((JobId)=>{
  res.render("developer/my-jobs", {user:req.session.user})
-  
 })
 });
 })
