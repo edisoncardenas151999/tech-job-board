@@ -1,3 +1,4 @@
+
 const router = require('express').Router();
 const Job = require('../models/Job.model');
 
@@ -14,7 +15,7 @@ router.get('/jobs/search', (req, res ) => {
       .then( (results) => {
 
         if(!results){
-
+              console.log('no results')
           Job.find({}).limit(2)
           .then( (jobsFromDB)=> {
             res.render('jobs/job-results',{otherJobs:jobsFromDB, user: req.session.user,  title:"Job Results"} )
