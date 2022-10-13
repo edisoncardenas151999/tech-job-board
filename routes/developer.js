@@ -213,6 +213,16 @@ Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
 
 
 
+router.get("/myJobs", isLoggedIn, (req,res)=>{
+ Job.find({applicants:req.session.user._id})
+ .then((data)=>{
+ res.render('developer/view-my-jobs', {user:req.session.user, job:data})
+ })
+
+})
+
+
+
 //Log Out
 router.post("/logout",isLoggedIn, (req, res, next) => {
   req.session.destroy(err => {
