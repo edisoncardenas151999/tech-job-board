@@ -1,3 +1,4 @@
+ <title>Dashboard</title>
 {{#if user}}
 <div class="dashboard-page">
 
@@ -5,6 +6,11 @@
   <a href="createJobPost" class="create-job-post">Create Job Post</a>
   <br><br>
   <a href="jobs" class="edit-job-post">View -Edit Job Post</a>
+
+  <form action="/employer/dashboard/{{user._id}}/delete" method="POST">
+
+    <button type="submit" class="delete-account-btn">Delete account</button>
+  </form>
 
   {{else }}
   <br>

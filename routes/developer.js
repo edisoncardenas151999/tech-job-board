@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
+const mongoose= require('mongoose');
 const { redirect } = require("express/lib/response");
 const saltRounds = 10;
 const isLoggedOut = require("../middleware/isLoggedOut");
@@ -159,6 +160,26 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
     res.redirect("/developer/createResume")
   })
 })
+ 
+router.post('/dashboard/:userId/delete', (req, res, next) => {
+   console.log(req.params);
+   const {userId} = req.params;
+
+   Developer.findByIdAndDelete(userId)
+    .then( () => {
+      console.log('Developer deleted.');
+      req.session.destroy( (error) => {
+        if(error){
+          next(error)
+        }
+        res.redirect('/');
+      })
+     
+    })
+    .catch( (error) => {
+      console.log('Error while deleting user: ', error)
+    })
+});
 
 
 router.get("/apply/:id", isLoggedIn, (req,res)=>{
@@ -174,12 +195,20 @@ router.get("/apply/:id", isLoggedIn, (req,res)=>{
 
 router.post("/apply/:id", isLoggedIn,(req, res) =>{
 const {id} = req.params
+Job.findById(id)
+.then((foundId)=>{
+  if (foundId.applicants.includes(req.session.user._id)) {
+    return res
+      .status(400)
+      .render('developer/application-error',{errorMessage: "already applied to this job." });
+  }
 Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
 .then((JobId)=>{
  res.render("developer/my-jobs", {user:req.session.user})
+  
 })
 });
-
+})
 
 
 //Log Out

@@ -11,7 +11,15 @@ router.get('/jobs/search', (req, res ) => {
         {company: {'$regex':query, '$options':'i'}}
       
       ]})
-      . then ( (results) => {
+      .then( (results) => {
+
+        if(!results){
+
+          Job.find({}).limit(2)
+          .then( (jobsFromDB)=> {
+            res.render('jobs/job-results',{otherJobs:jobsFromDB} )
+          })
+        }
         res.render('jobs/job-results', {jobs:results,user: req.session.user})
       })
       .catch( (error) => {
@@ -26,7 +34,12 @@ router.get('/jobs/:jobId', (req, res, ) => {
       const {jobId} = req.params;
       Job.findById(jobId)
        .then( (jobDetails) => {
-        res.render('jobs/job-description', {job: jobDetails, user: req.session.user} )
+        if(req.session.user && req.session.user.userType === 'employer'){
+          res.render("jobs/job-error", {user: req.session.user})
+        }
+        else {
+          res.render('jobs/job-description', {job: jobDetails, user: req.session.user} )
+        }
        })
        .catch( (error) => {
         console.log('Error while retrieving the data from the DB: ', error);
