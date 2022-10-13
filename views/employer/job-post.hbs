@@ -3,7 +3,7 @@
 
    <form action="/employer/createJobPost" method="POST" class="the-form">
       <label> Job title
-         <input type="text" name="jobTitle">
+         <input type="text" name="jobTitle" autofocus >
       </label>
       <label> Company
          <input type="text" name="company" value="{{user.company}}">
@@ -14,10 +14,10 @@
       <label> Location
          <input type="text" name="location">
       </label>
-
-      <textarea rows="4" cols="50" name ="description" class="create-post-text-area">
-Description:
-    </textarea>
+ <label> Description
+<textarea rows="4" cols="50" name ="description" class="create-post-text-area">
+</textarea>
+ </label>
       <button>Create</button>
    </form>
    <a href="dashboard" class="back-link">back </a>

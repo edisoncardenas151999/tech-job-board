@@ -2,7 +2,7 @@
 <div class="form-container">
 <form action="/employer/{{user._id}}/edit" method="POST" class="the-form">
   <label>Job Title:
-    <input  type="text" name="jobTitle" value="{{user.jobTitle}}" />
+    <input  type="text" name="jobTitle" value="{{user.jobTitle}}" autofocus >
   </label>
 
   <label>Company:
@@ -13,11 +13,10 @@
     <input type="text" name="location" value="{{user.location}}" />
   </label>
 
-    <textarea rows="4" cols="50">
-   Description:
-   {{user.description}}
+  <textarea rows="4" name="description" cols="50">
+{{user.description}}
   
-    </textarea>
+ </textarea>
     
  
 
