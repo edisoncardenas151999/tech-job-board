@@ -185,6 +185,9 @@ router.get("/apply/:id", isLoggedIn, (req,res)=>{
     const {id}= req.params
     Job.findById(id)
     .then((foundId)=>{
+      if(foundId.applicants.includes(req.session.user._id)){
+        res.render("developer/application-error", {user:req.session.user, errorMessage: "already applied to this job." ,  title:"Apply for Job"})
+      }
       res.render("developer/application", {user:updatedUser, foundId,  title:"Apply for Job"})
     })
   })
@@ -205,6 +208,9 @@ Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
 })
 });
 })
+
+
+
 
 
 //Log Out

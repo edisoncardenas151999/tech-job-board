@@ -11,6 +11,7 @@ const DeveloperSchema = new Schema({
   resume: String,
   contact: Number,
   userType: String,
+  imageUrl: String
 }
 );
 

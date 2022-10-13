@@ -4,6 +4,7 @@
   <h2 class="dashboard-welcome-message">Welcome, {{user.firstname}} </h2>
 
   <a href="/developer/createResume" class="create-resume-link">View - Edit Resume</a>
+  
 
   <form action="/developer/dashboard/{{user._id}}/delete " method="POST">
     <button type="submit" class="delete-account-btn">Delete account</button>
