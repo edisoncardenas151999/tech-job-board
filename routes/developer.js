@@ -11,21 +11,20 @@ const Job = require("../models/Job.model");
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
   if(req.session.user.userType === "developer"){
-    res.render("developer/dashboard", {user:req.session.user})
+    res.render("developer/dashboard", {user:req.session.user, title:"Dashboard"})
   }
   else if (req.session.user.userType === "employer"){
-    res.render("employer/dashboard", {user:req.session.user})
+    res.render("employer/dashboard", {user:req.session.user, title:"Dashboard"})
   }
-    
-});
+  });
 
 router.get("/signup", isLoggedOut, (req, res) => {
   const jobId = req.query.applyto;
    if(jobId){
-    res.render("developer/signup", {jobId});
+    res.render("developer/signup", {jobId, title:"Developer Sign up"});
    }
    else{
-    res.render('developer/signup');
+    res.render('developer/signup', {title:"Developer Sign up"});
    }
 });
 
@@ -52,7 +51,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("developer/signup", { errorMessage: "Username already taken." });
+        .render("developer/signup", { errorMessage: "Email already taken." });
     }
     return bcrypt
       .genSalt(saltRounds)
@@ -73,7 +72,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if(req.query.applyto ){
           res.render("developer/application", {user:req.session.user, jobId:req.query.applyto})
         }
-       else { return res.redirect("dashboard");}
+       else { return res.redirect("dashboard")};
 
       })
       .catch((error) => {
@@ -85,7 +84,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res
             .status(400)
-            .render("developer/signup", { errorMessage: "Username need to be unique. The username you chose is already in use." });
+            .render("developer/signup", { errorMessage: "Email need to be unique. The Email you chose is already in use." });
         }
         return res
           .status(500)
@@ -96,15 +95,13 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
 
 router.get("/login", isLoggedOut, (req, res) => {
-
   const jobId = req.query.applyto;
    if(jobId){
-    res.render("developer/login", {jobId});
+    res.render("developer/login", {jobId,  title:"Developer Log In"});
    }
    else{
-    res.render('developer/login');
+    res.render('developer/login',{title:"Developer Log in"});
    }
-   
 
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
@@ -148,7 +145,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 router.get("/createResume", isLoggedIn, (req,res)=>{
   Developer.findById(req.session.user._id)
   .then((foundUser)=>{
-    res.render("developer/resume", {user:foundUser})
+    res.render("developer/resume", {user:foundUser,  title:"Create Resume"})
   })
 })
 
@@ -188,7 +185,10 @@ router.get("/apply/:id", isLoggedIn, (req,res)=>{
     const {id}= req.params
     Job.findById(id)
     .then((foundId)=>{
-      res.render("developer/application", {user:updatedUser, foundId})
+      if(foundId.applicants.includes(req.session.user._id)){
+        res.render("developer/application-error", {user:req.session.user, errorMessage: "already applied to this job." ,  title:"Apply for Job"})
+      }
+      res.render("developer/application", {user:updatedUser, foundId,  title:"Apply for Job"})
     })
   })
 })
@@ -205,10 +205,22 @@ Job.findById(id)
 Job.findByIdAndUpdate(id,{ $push: { "applicants": req.session.user._id } })
 .then((JobId)=>{
  res.render("developer/my-jobs", {user:req.session.user})
-  
 })
 });
 })
+
+
+
+
+
+router.get("/myJobs", isLoggedIn, (req,res)=>{
+ Job.find({applicants:req.session.user._id})
+ .then((data)=>{
+ res.render('developer/view-my-jobs', {user:req.session.user, job:data})
+ })
+
+})
+
 
 
 //Log Out

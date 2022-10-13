@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
 
   Job.find({}).limit(2)
   .then((jobsFromDb) => {
-    res.render('index', {jobs:jobsFromDb});
+    res.render('index', {jobs:jobsFromDb,user: req.session.user});
   })
 })
 
