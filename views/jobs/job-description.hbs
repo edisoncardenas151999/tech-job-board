@@ -8,13 +8,12 @@
         <p class="job-location">{{job.location}}</p>
     </div>
     <div class="job-info-details">
-        <p class="job-salary">{{job.salary}} annually</p>
+        <p class="job-salary">${{job.salary}} annually</p>
         <p class="job-work-hours">{{job.workHours}}</p>
         <p class="job-description">{{job.description}}</p>
     </div>
 
 </div>
-
 {{#if user}}
   {{#if user.contact}}
 <div class="apply-now-btn-wrapper">
