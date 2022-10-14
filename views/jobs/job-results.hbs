@@ -30,18 +30,16 @@
         <h2 class="no-match-found-message">No match found.</h2>
     </div>
 
-    {{!-- <ul class="list-wrapper">
 
-        <li class="company-info">
-            <h3 class="list-company-job-title">{{this.jobTitle}}</h3>
-            <h4 class="list-company-name">{{this.company}}</h4>
-            <p class="list-company-location">{{this.location}}</p>
-            <a href="/jobs/{{this._id}}" class="job-details-btn">See description</a>
+    {{#each otherJobs}}
+    <li class="company-info">
+        <h3 class="list-company-job-title">{{this.jobTitle}}</h3>
+        <h4 class="list-company-name">{{this.company}}</h4>
+        <p class="list-company-location">{{this.location}}</p>
+        <a href="/jobs/{{this._id}}" class="job-details-btn">See description</a>
 
-        </li>
-
-    </ul> --}}
-
+    </li>
+    {{/each}}
 
     {{/if}}
 </ul>

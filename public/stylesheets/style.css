@@ -14,7 +14,7 @@
     background-color: rgba(245, 245, 245, 0.8);
     backdrop-filter: blur(8px);
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     position: sticky;
@@ -23,8 +23,6 @@
   }
 
   #company-name {
-    position: absolute;
-    left: 0;
     margin-left: 16px;
     color: #090962;
   }
@@ -282,13 +280,11 @@
   /************ styles for job search section  ************/
   #job-search-section {
     width: 100%;
-    /* background-color: #090962; */
     background-image: url('../images/meeting.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* height: 250px; */
     padding: 150px 0;
     box-sizing: border-box;
     display: flex;
@@ -299,6 +295,7 @@
 
   .search-jobs-heading {
     color: #fff;
+    text-shadow: 0px 0px 6px black;
   }
 
   /* search bar styles */
@@ -318,6 +315,7 @@
     border-radius: 8px;
     background-color: #6f086f;
     color: #fff;
+    cursor: pointer;
     transition: background-color .15s;
   }
 
@@ -338,11 +336,12 @@
 
   /* unordered list styles */
   .list-wrapper {
-    width: 800px;
+    max-width: 800px;
     margin: 30px auto 0 auto;
     padding: 10px;
     list-style-type: none;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 
   }
@@ -850,6 +849,7 @@
   footer .links ul {
     display: inline-block;
     width: 200px;
+    padding: 0;
   }
 
 
@@ -882,5 +882,40 @@
     font-family: "Lato", Arial, sans-serif;
     color: rgba(255, 255, 255, 0.5);
     margin-bottom: 0;
+
+  }
+
+  /********  media queries ***********/
+
+
+  @media only screen and (max-width: 730px) {
+
+    nav #logo span,
+    .home-link {
+      display: none;
+
+    }
+
+  }
+
+  @media only screen and (max-width:490px) {
+    .search-jobs-heading {
+      text-align: center;
+    }
+
+    #search-input-field {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .job-search-btn {
+      margin-top: 40px;
+      margin-left: 125px;
+      margin-right: 125px;
+    }
+
+    #job-search-section {
+      padding: 75px 0;
+    }
 
   }
