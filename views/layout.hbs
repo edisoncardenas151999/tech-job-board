@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-      <title>{{title}}</title>
+  <title>{{title}}</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -14,12 +14,12 @@
   <nav>
 
     <h3 id="company-name">
-      <a href="/" id="logo">Tech Job Board</a>
+      <a href="/" id="logo"> <span>Tech Job Board</span></a>
     </h3>
 
     <ul>
       <li>
-        <a href="/" class="nav-link">Home</a>
+        <a href="/" class="nav-link home-link">Home</a>
       </li>
 
       {{#if user}}
@@ -108,7 +108,7 @@
           <a href="/service">Service</a>
         </li>
       </ul>
-      <p id="copy-right">Tech Job Board, inc. &copy; 2022 All Rights Reserved Worldwide</p>
+      <p id="copy-right">Tech Job Board, inc. &copy; {{year}} All Rights Reserved Worldwide</p>
     </div>
 
   </footer>

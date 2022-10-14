@@ -27,6 +27,7 @@ const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)}- Tech Job Board`;
+app.locals.year = new Date().getFullYear();
 
 // 👇 Start handling routes here
 
