@@ -1,5 +1,6 @@
 
 const router = require('express').Router();
+const { get } = require('express/lib/response');
 const Job = require('../models/Job.model');
 
       // GET route to search for jobs and companies
@@ -20,6 +21,7 @@ router.get('/jobs/search', (req, res ) => {
       });
     
 });
+
  // GET route to see company details
 
 router.get('/jobs/:jobId', (req, res, ) => {
