@@ -188,7 +188,7 @@
 
   /* tech guys image */
   .service-page-container #tech {
-    width: 400px;
+    max-width: 400px;
     float: right;
     border-radius: 8px;
     margin: 13px 0 2px 20px;
@@ -197,7 +197,7 @@
 
   /* keyboard image */
   .service-page-container #keyboard {
-    width: 400px;
+    max-width: 400px;
     height: 266px;
     float: left;
     border-radius: 8px;
@@ -283,13 +283,12 @@
     background-image: url('../images/meeting.jpg');
     background-position: center;
     background-size: cover;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-attachment: fixed;
     padding: 150px 0;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
 
   }
 
@@ -918,4 +917,11 @@
       padding: 75px 0;
     }
 
+  }
+
+  @media only screen and (max-width: 395px) {
+
+    .service-page-container #keyboard {
+      max-width: 370px;
+    }
   }
