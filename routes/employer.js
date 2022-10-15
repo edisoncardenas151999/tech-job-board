@@ -207,7 +207,7 @@ router.post("/createJobPost", isLoggedIn,(req, res) => {
 
 // delete account
  
-router.post('/dashboard/:userId/delete', (req, res, next) => {
+router.post('/dashboard/:userId/delete', isLoggedIn,(req, res, next) => {
    console.log(`employer id: ${req.params.userId}`)
    const {userId} =req.params;
 

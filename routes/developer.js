@@ -102,7 +102,6 @@ router.get("/login", isLoggedOut, (req, res) => {
    else{
     res.render('developer/login',{title:"Developer Log in"});
    }
-
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
   console.log(req.query)
@@ -126,12 +125,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
             .render("developer/login", { errorMessage: "Wrong credentials." });
         }
 
-        req.session.user = user;
+        req.session.user = user
         req.query.applyto 
         if(req.query.applyto ){
           res.render("developer/application", {user:req.session.user, jobId:req.query.applyto})
         }
-       else { return res.redirect("dashboard");}
+       else { return res.redirect("dashboard")}
 
       });
     })
@@ -154,7 +153,7 @@ router.post("/createResume", isLoggedIn,(req, res)=>{
   Developer.findByIdAndUpdate(req.session.user._id,{resume:req.body.resume},{new:true})
   .then((updatedUSer)=>{
     console.log(updatedUSer)
-    res.redirect("/developer/createResume")
+    res.redirect("/developer/dashboard")
   })
 })
  
