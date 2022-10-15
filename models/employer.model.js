@@ -1,20 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 const employerSchema = new Schema({
-  firstname: {
+firstname: String,
+lastname: String,
+  email: {
     type: String,
     unique: true,
   },
- lastname: {
-    type: String,
-    unique: true,
-  },
-  email: String,
   password: String,
   jobs: [{type: Schema.Types.ObjectId, ref: 'Job'}],
   userType: String,
   company:   String,
-   
 }
 );
 

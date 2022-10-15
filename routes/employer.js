@@ -13,15 +13,15 @@ const Job = require("../models/Job.model");
 
 router.get("/dashboard", isLoggedIn,(req, res) => {
   if(req.session.user.userType === "employer"){
-    res.render("employer/dashboard", {user:req.session.user})
+    res.render("employer/dashboard", {user:req.session.user,title:"Dashboard"})
   }
   else if (req.session.user.userType === "developer"){
-    res.render("developer/dashboard", {user:req.session.user})
+    res.render("developer/dashboard", {user:req.session.user, title:"Dashboard"})
   }
 });
 
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("employer/signup");
+  res.render("employer/signup", {title:"Employer Sign up"});
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
@@ -48,7 +48,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("employer/signup", { errorMessage: "Username already taken." });
+        .render("employer/signup", { errorMessage: "Email already taken." });
     }
     return bcrypt
       .genSalt(saltRounds)
@@ -76,7 +76,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res
             .status(400)
-            .render("employer/signup", { errorMessage: "Username need to be unique. The username you chose is already in use." });
+            .render("employer/signup", { errorMessage: "Email need to be unique. The Email you chose is already in use." });
         }
         return res
           .status(500)
@@ -87,7 +87,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
 
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("employer/login");
+  res.render("employer/login", {title:"Employer Log in"});
 });
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
@@ -95,7 +95,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   if (!email) {
     return res
       .status(400)
-      .render("employer/login", { errorMessage: "Please provide your username." });
+      .render("employer/login", { errorMessage: "Please provide your email." });
   }
 
   Employer.findOne({ email })
@@ -126,7 +126,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 router.get("/createJobPost", isLoggedIn,(req, res) => {
   console.log(req.session.user)
- res.render("employer/job-post",{user:req.session.user})
+ res.render("employer/job-post",{user:req.session.user, title:"Create Job Post"})
 })
 
 
@@ -136,7 +136,7 @@ router.get("/jobs", isLoggedIn, (req,res)=>{
   Employer.findById(req.session.user._id)
  .populate('jobs')
   .then((updatedUser)=>{
-   res.render("employer/jobs", {user:updatedUser})
+   res.render("employer/jobs", {user:updatedUser, title:"Jobs"})
   })
 })
  
@@ -161,7 +161,7 @@ router.get("/:id/edit", isLoggedIn, (req,res)=>{
   .populate('applicants')
   .then((foundJob)=>{
     console.log(foundJob)
-    res.render("employer/job-edit", {user:foundJob})
+    res.render("employer/job-edit", {user:foundJob, title:"Edit Job"})
   })
 })
  
@@ -181,15 +181,9 @@ router.get("/:id/applicants", isLoggedIn, (req,res)=>{
   .populate('applicants')
   .then((foundApplicants)=>{
     console.log(foundApplicants)
-    res.render("employer/job-applicants", {applicants:foundApplicants.applicants, user:req.session.user})
+    res.render("employer/job-applicants", {applicants:foundApplicants.applicants, user:req.session.user, title:"Applicants"})
   })
 })
-
-
-
-router.get("/createJobPost", isLoggedIn,(req, res) => {
-  res.render("employer/job-post", {user:req.session.user})
-});
 
 router.post("/createJobPost", isLoggedIn,(req, res) => {
  const{jobTitle,salary,company,description} = req.body
@@ -213,7 +207,7 @@ router.post("/createJobPost", isLoggedIn,(req, res) => {
 
 // delete account
  
-router.post('/dashboard/:userId/delete', (req, res, next) => {
+router.post('/dashboard/:userId/delete', isLoggedIn,(req, res, next) => {
    console.log(`employer id: ${req.params.userId}`)
    const {userId} =req.params;
 

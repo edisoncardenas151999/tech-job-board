@@ -1,6 +1,7 @@
 <html lang="en">
 
 <head>
+  <title>{{title}}</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -13,12 +14,12 @@
   <nav>
 
     <h3 id="company-name">
-      <a href="/" id="logo">Tech Job Board</a>
+      <a href="/" id="logo"> <span>Tech Job Board</span></a>
     </h3>
 
     <ul>
       <li>
-        <a href="/" class="nav-link">Home</a>
+        <a href="/" class="nav-link home-link">Home</a>
       </li>
 
       {{#if user}}
@@ -71,34 +72,47 @@
     </ul>
   </nav>
 
-
-
-
-
   {{{body}}}
 
 
+  <footer>
 
+    <div class="links">
+      <ul>
+        <li>Developer</li>
+        <li>
+          <a href="/developer/signup">Sign up</a>
+        </li>
+        <li>
+          <a href="/developer/login">Log in</a>
+        </li>
+      </ul>
+
+      <ul>
+        <li>Employer</li>
+        <li>
+          <a href="/employer/signup">Sign up</a>
+        </li>
+        <li>
+          <a href="/employer/login">Log in</a>
+        </li>
+
+      </ul>
+
+      <ul>
+        <li>Company</li>
+        <li>
+          <a href="/about">About</a>
+        </li>
+        <li>
+          <a href="/service">Service</a>
+        </li>
+      </ul>
+      <p id="copy-right">Tech Job Board, inc. &copy; {{year}} All Rights Reserved Worldwide</p>
+    </div>
+
+  </footer>
   <script src="/js/script.js"></script>
 </body>
 
 </html>
-
-
-
-
-{{!-- <footer>
-  <ul>
-    <a href="/about" class="footer-link">
-      <li>About</li>
-    </a>
-    <a href="/service" class="footer-link">
-      <li>Service</li>
-    </a>
-    <a href="#" class="footer-link">
-      <li>Contact</li>
-    </a>
-  </ul>
-  <p id="copy-right">Tech Job Board, inc. &copy; 2022 All Rights Reserved Worldwide</p>
-  {{!--
-</footer> --}}

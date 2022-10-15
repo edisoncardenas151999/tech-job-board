@@ -1,4 +1,6 @@
+
 const router = require('express').Router();
+const { get } = require('express/lib/response');
 const Job = require('../models/Job.model');
 
       // GET route to search for jobs and companies
@@ -12,21 +14,14 @@ router.get('/jobs/search', (req, res ) => {
       
       ]})
       .then( (results) => {
-
-        if(!results){
-
-          Job.find({}).limit(2)
-          .then( (jobsFromDB)=> {
-            res.render('jobs/job-results',{otherJobs:jobsFromDB} )
-          })
-        }
-        res.render('jobs/job-results', {jobs:results,user: req.session.user})
+        res.render('jobs/job-results', {jobs:results,user: req.session.user, title:"Job Results"})
       })
       .catch( (error) => {
         console.log('Error while getting the data from the DB: ', error);
       });
     
 });
+
  // GET route to see company details
 
 router.get('/jobs/:jobId', (req, res, ) => {
@@ -34,17 +29,11 @@ router.get('/jobs/:jobId', (req, res, ) => {
       const {jobId} = req.params;
       Job.findById(jobId)
        .then( (jobDetails) => {
-        if(req.session.user && req.session.user.userType === 'employer'){
-          res.render("jobs/job-error", {user: req.session.user})
-        }
-        else {
-          res.render('jobs/job-description', {job: jobDetails, user: req.session.user} )
-        }
+        res.render('jobs/job-description', {job: jobDetails, user: req.session.user,  title:"Job Description"})
        })
        .catch( (error) => {
         console.log('Error while retrieving the data from the DB: ', error);
        });
 });
-
 
 module.exports = router;

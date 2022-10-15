@@ -14,7 +14,7 @@
     background-color: rgba(245, 245, 245, 0.8);
     backdrop-filter: blur(8px);
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     position: sticky;
@@ -23,8 +23,6 @@
   }
 
   #company-name {
-    position: absolute;
-    left: 0;
     margin-left: 16px;
     color: #090962;
   }
@@ -83,10 +81,6 @@
 
   }
 
-  /* #logout-btn {
-    font-size: 18px;
-  } */
-
   /* ******** end of navbar styles  */
 
 
@@ -101,7 +95,7 @@
 
   .hero {
     width: 100%;
-    padding: 200px 0;
+    padding: 150px 0;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -194,7 +188,7 @@
 
   /* tech guys image */
   .service-page-container #tech {
-    width: 400px;
+    max-width: 400px;
     float: right;
     border-radius: 8px;
     margin: 13px 0 2px 20px;
@@ -203,7 +197,7 @@
 
   /* keyboard image */
   .service-page-container #keyboard {
-    width: 400px;
+    max-width: 400px;
     height: 266px;
     float: left;
     border-radius: 8px;
@@ -286,18 +280,21 @@
   /************ styles for job search section  ************/
   #job-search-section {
     width: 100%;
-    background-color: #090962;
-    height: 250px;
+    background-image: url('../images/meeting.jpg');
+    background-position: center;
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    padding: 150px 0;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
 
   }
 
   .search-jobs-heading {
     color: #fff;
-
+    text-shadow: 0px 0px 6px black;
   }
 
   /* search bar styles */
@@ -317,11 +314,17 @@
     border-radius: 8px;
     background-color: #6f086f;
     color: #fff;
+    cursor: pointer;
     transition: background-color .15s;
   }
 
   .job-search-btn:hover {
     background-color: #5a0b5a;
+  }
+
+  .suggested-job-heading {
+    color: #090962;
+    margin-left: 23%;
   }
 
   /************** end of styles for job search section ***************/
@@ -332,11 +335,12 @@
 
   /* unordered list styles */
   .list-wrapper {
-    width: 800px;
+    max-width: 800px;
     margin: 30px auto 0 auto;
     padding: 10px;
     list-style-type: none;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 
   }
@@ -452,7 +456,7 @@
     padding: 4px;
     border-radius: 8px;
     box-shadow: 1px 1px 8px lightgrey;
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     text-align: center;
     transition: transform .15s;
 
@@ -472,7 +476,7 @@
     padding: 10px 15px;
     font-family: 'Ubuntu Condensed', "Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 15px;
-    margin-top: 75px;
+    margin-top: 50px;
     transition: background-color .15s;
   }
 
@@ -827,51 +831,97 @@
 
   /*****************  end of job description styles  ********************/
 
-
-
-
-
-
-
-
-
-
   /* *Footer */
+  footer {
+    margin-top: 100px;
+    width: 100%;
+    padding: 30px 0;
+    background-color: #090962;
+    color: #fff;
 
-  /* 
-  #profile {
-    color: #090962;
-    margin-left: 5px;
+  }
+
+  footer .links {
+    text-align: center;
+  }
+
+  footer .links ul {
+    display: inline-block;
+    width: 200px;
+    padding: 0;
+  }
+
+
+  footer ul li:first-child {
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .links ul li {
+    list-style-type: none;
+
+  }
+
+  footer .links ul a {
+    line-height: 1.5em;
+    color: #fff;
+    opacity: 0.7;
+    transition: text-decoration .15s;
+  }
+
+  footer .links ul a:hover {
+    text-decoration: underline;
+    color: #fff;
+    opacity: 1;
   }
 
   #copy-right {
-    font-size: 13px;
+    font-size: 12px;
     text-align: center;
-    margin: 0 0;
+    font-family: "Lato", Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0;
 
   }
 
-  footer {
-    width: 100%;
-    text-align: center;
-    height: 150px;
-    background-color: rgba(245, 245, 245, 0.8);
-    position: absolute;
-    bottom: 0;
+  /********  media queries ***********/
+
+
+  @media only screen and (max-width: 730px) {
+
+    nav #logo span,
+    .home-link {
+      display: none;
+
+    }
 
   }
 
-  ul .footer-link {
-    width: 75px;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 3em;
-    padding: 10px;
-    list-style-type: none;
-    color: #090962;
-    transition: 0.9s;
+  @media only screen and (max-width:490px) {
+    .search-jobs-heading {
+      text-align: center;
+    }
+
+    #search-input-field {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .job-search-btn {
+      margin-top: 40px;
+      margin-left: 125px;
+      margin-right: 125px;
+    }
+
+    #job-search-section {
+      padding: 75px 0;
+    }
+
   }
 
-  ul .footer-link:hover {
-    text-decoration: underline;
-  } */
+  @media only screen and (max-width: 395px) {
+
+    .service-page-container #keyboard {
+      max-width: 370px;
+    }
+  }

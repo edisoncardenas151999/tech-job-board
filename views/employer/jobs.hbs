@@ -2,17 +2,21 @@
 <ul class="list-wrapper">
     {{#if user.jobs}}
     {{#each user.jobs}}
-    <li class="company-info">
-        <h3 class="list-company-job-title">{{this.jobTitle}}</h3>
-        <h4 class="list-company-name">{{this.company}}</h4>
-        <p class="list-company-location">{{this.location}}</p>
-        <p class="list-company-description">{{this.description}}</p>
-        <a href="/employer/{{_id}}/edit">Edit</a>
+   <div class="job-detail-container">
+    <div class="job-info-header">
+        <h3 class="job-title">{{jobTitle}}</h3>
+        <h4 class="job-company">{{company}}</h4>
+        <p class="job-location">{{location}}</p>
+    </div>
+    <div class="job-info-details">
+        <p class="job-salary">${{salary}} annually</p>
+        <p class="job-description">{{description}}</p>
+    </div>
+      <a href="/employer/{{_id}}/edit">Edit</a>
         <br>
         <a href="/employer/{{_id}}/applicants">View Applicants</a>
 
-    </li>
-    </div>
+</div>
     {{/each}}
     {{else}}
 
@@ -20,9 +24,11 @@
         <h2 class="application-message">No jobs Found, Create New Job Post</h2>
     </div>
     {{/if}}
+</ul>
     <br>
     <a href="dashboard" class="back-link">back</a>
-</ul>
+
+  
 {{!-- <ul class="list-wrapper">
     {{#if jobs}}
     <p>All results</p>
