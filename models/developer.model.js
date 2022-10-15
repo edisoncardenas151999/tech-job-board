@@ -9,7 +9,7 @@ const DeveloperSchema = new Schema({
   },
   password: String,
   resume: String,
-  contact: Number,
+  contact: String,
   userType: String,
   imageUrl: String
 }
