@@ -2,21 +2,21 @@
 <ul class="list-wrapper">
     {{#if user.jobs}}
     {{#each user.jobs}}
-   <div class="job-detail-container">
-    <div class="job-info-header">
-        <h3 class="job-title">{{jobTitle}}</h3>
-        <h4 class="job-company">{{company}}</h4>
-        <p class="job-location">{{location}}</p>
-    </div>
-    <div class="job-info-details">
-        <p class="job-salary">${{salary}} annually</p>
-        <p class="job-description">{{description}}</p>
-    </div>
-      <a href="/employer/{{_id}}/edit">Edit</a>
+    <div class="job-detail-container">
+        <div class="job-info-header">
+            <h3 class="job-title">{{jobTitle}}</h3>
+            <h4 class="job-company">{{company}}</h4>
+            <p class="job-location">{{location}}</p>
+        </div>
+        <div class="job-info-details">
+            <p class="job-salary">${{salary}} annually</p>
+            <p class="job-description">{{description}}</p>
+        </div>
+        <a href="/employer/{{_id}}/edit">Edit</a>
         <br>
         <a href="/employer/{{_id}}/applicants">View Applicants</a>
 
-</div>
+    </div>
     {{/each}}
     {{else}}
 
@@ -25,10 +25,10 @@
     </div>
     {{/if}}
 </ul>
-    <br>
-    <a href="dashboard" class="back-link">back</a>
+<br>
+<a href="dashboard" class="back-link">back</a>
 
-  
+
 {{!-- <ul class="list-wrapper">
     {{#if jobs}}
     <p>All results</p>
