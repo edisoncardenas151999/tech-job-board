@@ -842,7 +842,7 @@
   .employer-job-edit {
     display: block;
     width: 75px;
-    margin: 0 auto 15px auto;
+    margin: 0 auto 0 auto;
     padding: 10px 15px;
     border-radius: 8px;
     color: #090962;
