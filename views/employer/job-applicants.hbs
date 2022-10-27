@@ -1,18 +1,18 @@
- <title>Applicants</title>
+<title>Applicants</title>
 {{#if applicants}}
 <ul class="list-wrapper">
     {{#each applicants}}
     <li class="company-info">
-         <h3>{{this.firstname}} {{this.lastname}}</h3>
-         <a href="mailto:{{this.email}}">{{this.email}}</a>
-         <br>
-          <a href="tel:{{this.contact}}">{{this.contact}}</a>
-          <br>
-       
+        <h3>{{this.firstname}} {{this.lastname}}</h3>
+        <a href="mailto:{{this.email}}" class="applicant-email">Email : {{this.email}}</a>
+        <br>
+        <a href="tel:{{this.contact}}" class="applicant-phone-number">Tel : {{this.contact}}</a>
+        <br>
+
     </li>
     {{/each}}
     <br>
-    
+
 </ul>
 {{else}}
 <ul class="list-wrapper">
