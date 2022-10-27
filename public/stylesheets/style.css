@@ -901,7 +901,15 @@
     color: #cea135;
   }
 
+  .no-applicant {
+    text-align: center;
+    color: #090962;
+  }
 
+  .job-applicant-no-job {
+    text-align: center;
+    color: #090962;
+  }
 
   /* end of styles for employer  and developer  dashboard*/
 
