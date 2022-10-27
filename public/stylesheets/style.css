@@ -829,6 +829,82 @@
   }
 
 
+
+  /* styles for employer  and developer  dashboard*/
+
+
+
+
+  .job-edit-form {
+    height: 600px;
+  }
+
+  .employer-job-edit {
+    display: block;
+    width: 75px;
+    margin: 0 auto 15px auto;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #090962;
+    text-align: center;
+    transition: background-color .15s;
+  }
+
+  .employer-job-edit:hover {
+    background-color: #cea135;
+    color: #fff;
+  }
+
+  .employer-job-applicants {
+    display: block;
+    width: 100px;
+    margin: 0 auto 15px auto;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #090962;
+    text-align: center;
+    transition: background-color .15s;
+  }
+
+
+
+  .employer-job-applicants:hover {
+    background-color: #cea135;
+    color: #fff;
+  }
+
+  .applicant-full-name {
+    text-align: center;
+    color: #090962;
+  }
+
+  .applicant-email {
+    color: #090962;
+    display: block;
+    text-align: center;
+    transition: color .15s;
+  }
+
+
+  .applicant-email:hover {
+    color: #cea135;
+  }
+
+  .applicant-phone-number {
+    color: #090962;
+    display: block;
+    text-align: center;
+    transition: color .15s
+  }
+
+  .applicant-phone-number:hover {
+    color: #cea135;
+  }
+
+
+
+  /* end of styles for employer  and developer  dashboard*/
+
   /*****************  end of job description styles  ********************/
 
   /* *Footer */
