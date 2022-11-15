@@ -95,7 +95,7 @@
 
   .hero {
     width: 100%;
-    padding: 150px 0;
+    padding: 200px 0;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -285,7 +285,7 @@
     background-size: cover;
     /* background-repeat: no-repeat; */
     background-attachment: fixed;
-    padding: 150px 0;
+    padding: 200px 0;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
